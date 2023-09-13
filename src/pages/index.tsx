@@ -17,7 +17,7 @@ export default function Home() {
 					</div>
 					<p className="text-lg">
 						Desenvolvedor Frontend Freelancer a procura de oportunidades de
-						trabalho para aprimorar minhas habilidades como programador
+						trabalho para aprimorar minhas habilidades como programador.
 					</p>
 				</div>
 			</section>
