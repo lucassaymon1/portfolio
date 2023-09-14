@@ -21,6 +21,15 @@ export default function Home() {
 					</p>
 				</div>
 			</section>
+			<section>
+				<h2 className="text-[68px] text-center">Tecnologias</h2>
+				<div>
+					<img
+						src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+						width="60px"
+					/>
+				</div>
+			</section>
 			<section className="p-12">
 				<h2 className="text-[68px] text-center">Projetos</h2>
 				<div className="grid grid-cols-1 md:grid-cols-2 text-center">
