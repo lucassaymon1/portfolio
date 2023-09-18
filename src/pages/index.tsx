@@ -1,5 +1,20 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
+import { TechSvg, TechImg } from '@/components/TechIcon'
+
+import {
+	Css,
+	Html,
+	Javascript,
+	Git,
+	GitHub,
+	Tailwindcss,
+	Nextjs,
+	Nodejs,
+	Reactjs,
+	Sqlite,
+	Typescript
+} from '@/utils/techIcons'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -23,10 +38,21 @@ export default function Home() {
 			</section>
 			<section>
 				<h2 className="text-[68px] text-center">Tecnologias</h2>
-				<div>
-					<img
-						src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-						width="60px"
+				<div className="flex flex-row flax-wrap gap-8 justify-center align-center">
+					<TechSvg icon={Javascript} title="Javascript" />
+					<TechSvg icon={Typescript} title="Typescript" />
+					<TechSvg icon={Nextjs} title="Nextjs" />
+					<TechSvg icon={Reactjs} title="Reactjs" />
+					<TechSvg icon={Tailwindcss} title="Tailwindcss" />
+					<TechSvg icon={Nodejs} title="Nodejs" />
+					<TechSvg icon={Sqlite} title="Sqlite" />
+					<TechSvg icon={Git} title="Git" />
+					<TechSvg icon={GitHub} title="GitHub" />
+					<TechSvg icon={Html} title="Html" />
+					<TechSvg icon={Css} title="Css" />
+					<TechImg
+						src="https://miro.medium.com/v2/resize:fit:318/1*7jRD5QhgARucFKvRHFxpOg.png"
+						title="styled-components"
 					/>
 				</div>
 			</section>
