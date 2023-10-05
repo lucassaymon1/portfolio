@@ -19,27 +19,29 @@ function ImgContainer({
 	return (
 		<div
 			className={`
-				bg-gray-200 p-12 rounded-3xl
+				bg-slate-900 p-12 
 				md:flex ${
-					direction === 'left' ? 'flex-row' : 'flex-row-reverse'
-				} justify-between gap-12`}
+					direction === 'left' ? 'flex-row mr-32' : 'flex-row-reverse ml-32'
+				} justify-between gap-12 shadow-md border border-slate-500 hover:bg-slate-800 transition-all`}
 		>
 			<Image src={src} alt="Projeto Food Explorer" width={740} />
 
-			<div>
-				<a href=""></a>
-				<h3 className="text-4xl mb-6">{title}</h3>
-				<p className="text-lg mb-12">{description}</p>
-				<div className="flex justify-center align-center flex-wrap gap-2">
-					<Tag title="tag" />
-					<Tag title="tag" />
-					<Tag title="tag" />
-					<Tag title="tag" />
-					<Tag title="tag" />
-					<Tag title="tag" />
-					<Tag title="tag" />
-					<Tag title="tag" />
-					<Tag title="tag" />
+			<div className="">
+				<h3 className="text-4xl mt-12 mb-14 text-green-500 border-b border-slate-500 pb-4 mx-14">
+					{title}
+				</h3>
+
+				<div className="">
+					<p className="text-lg mb-16 text-slate-200">{description}</p>
+					<div className="flex justify-center align-center flex-wrap gap-2">
+						<Tag title="JavaScript" />
+						<Tag title="ReactJS" />
+						<Tag title="HTML5" />
+						<Tag title="CSS3" />
+						<Tag title="Styled-Components" />
+						<Tag title="NodeJS" />
+						<Tag title="SQLite" />
+					</div>
 				</div>
 			</div>
 		</div>

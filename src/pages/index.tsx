@@ -7,6 +7,11 @@ import rocketnotes from '../assets/images/rocketnotes.png'
 import { BsMailbox2 } from 'react-icons/bs'
 import { SiMinutemailer } from 'react-icons/si'
 import { GiMailbox } from 'react-icons/gi'
+import { GoMail } from 'react-icons/go'
+import { FiMail } from 'react-icons/fi'
+import { FaPaperPlane } from 'react-icons/fa'
+import { IoIosPaperPlane } from 'react-icons/io'
+
 import copy from 'copy-to-clipboard'
 
 import {
@@ -22,7 +27,7 @@ import {
 	Sqlite,
 	Typescript
 } from '@/utils/techIcons'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -30,10 +35,17 @@ export default function Home() {
 	const [copyEmail, setCopyEmail] = useState('')
 	const [copyButton, setCopyButton] = useState('Copiar')
 	const contactEmail = 'lucassaymon.dev@gmail.com'
+	const emailRef = useRef<HTMLDivElement | null>(null)
 
 	function handleCopyEmail(email: string) {
 		setCopyEmail(email)
 		navigator.clipboard.writeText(copyEmail)
+
+		emailRef.current?.classList.add('bg-green-700')
+		setTimeout(() => {
+			emailRef.current?.classList.remove('bg-green-700')
+		}, 500)
+
 		setCopyButton('copiado!')
 		setTimeout(() => {
 			setCopyButton('copiar')
@@ -41,9 +53,12 @@ export default function Home() {
 	}
 
 	return (
-		<main className="flex justify-center flex-col">
-			<section className="bg-black flex align-center justify-center h-screen w-screen p-12">
+		<main className="flex justify-center flex-col text-slate-200">
+			<section className="bg-gradient-radial from-slate-800 to-black flex align-center justify-center h-screen w-screen p-12">
 				<div className="flex justify-center align-center flex-col pt-10 text-[lightgray]">
+					<h1 className="text-[52px] leading-[5rem] font-bold ml-2 mb-4">
+						Olá, sou Lucas Saymon 👋
+					</h1>
 					<h1 className="text-[128px] leading-[5rem] font-bold">
 						DESENVOLVEDOR
 					</h1>
@@ -58,64 +73,76 @@ export default function Home() {
 					</p>
 				</div>
 			</section>
-			<section>
-				<h2 className="text-[68px] text-center">Tecnologias</h2>
-				<div className="flex flex-row flax-wrap gap-8 justify-center align-center">
-					<TechSvg icon={Javascript} title="Javascript" />
-					<TechSvg icon={Typescript} title="Typescript" />
-					<TechSvg icon={Nextjs} title="Nextjs" />
-					<TechSvg icon={Reactjs} title="Reactjs" />
-					<TechSvg icon={Tailwindcss} title="Tailwindcss" />
-					<TechSvg icon={Nodejs} title="Nodejs" />
-					<TechSvg icon={Sqlite} title="Sqlite" />
-					<TechSvg icon={Git} title="Git" />
-					<TechSvg icon={GitHub} title="GitHub" />
-					<TechSvg icon={Html} title="Html" />
-					<TechSvg icon={Css} title="Css" />
-					<TechImg
-						src="https://miro.medium.com/v2/resize:fit:318/1*7jRD5QhgARucFKvRHFxpOg.png"
-						title="styled-components"
-					/>
-				</div>
-			</section>
-			<section className="p-12 text-center">
-				<h2 className="text-[68px] text-center">Projetos</h2>
-				<div className="flex flex-col gap-16">
-					<ImgContainer
-						direction="left"
-						title="Food Explorer"
-						src={foodexplorer}
-						description="Projeto fullstack que possui funcionalidades como: cadastro e autenticação de usuário, upload e edição de imagem do perfil do usuário, registro de notas pessoais no banco de dados, criptografia de senhas e edição das informações pessoais do usuário."
-					/>
-					<ImgContainer
-						direction="right"
-						title="Rocket Notes"
-						src={rocketnotes}
-						description="Projeto fullstack que possui funcionalidades como: cadastro e autenticação de usuário, upload e edição de imagem do perfil do usuário, registro de notas pessoais no banco de dados, criptografia de senhas e edição das informações pessoais do usuário."
-					/>
-				</div>
-			</section>
-			<section className="p-12 text-center">
-				<h2 className="text-[68px] text-center">Contato</h2>
-				<div className="w-full grid grid-cols-7 mb-12">
-					<div className="w-full flex items-start justify-start col-start-1 col-end-3 ">
-						<GiMailbox size="80%" color="#86efac" />
+			<div className="bg-slate-500 h-1"></div>
+			<div className="bg-slate-900">
+				<section className="pt-24">
+					<h2 className="text-[68px] text-center">Tecnologias</h2>
+
+					<div className="flex flex-row flex-wrap gap-6 justify-center align-center">
+						<TechSvg icon={Javascript} title="Javascript" />
+						<TechSvg icon={Typescript} title="Typescript" />
+						<TechSvg icon={Nextjs} title="Nextjs" />
+						<TechSvg icon={Reactjs} title="Reactjs" />
+						<TechSvg icon={Tailwindcss} title="Tailwindcss" />
+						<TechSvg icon={Nodejs} title="Nodejs" />
+						<TechSvg icon={Sqlite} title="Sqlite" />
+						<TechSvg icon={Git} title="Git" />
+						<TechSvg icon={GitHub} title="GitHub" />
+						<TechSvg icon={Html} title="Html" />
+						<TechSvg icon={Css} title="Css" />
+						<TechImg
+							src="https://miro.medium.com/v2/resize:fit:318/1*7jRD5QhgARucFKvRHFxpOg.png"
+							title="styled components"
+						/>
 					</div>
-					<div className="flex flex-col justify-center col-start-3 col-end-6">
+				</section>
+				<section className="p-12 text-center mb-48">
+					<h2 className="text-[68px] text-center">Projetos</h2>
+					<div className="flex flex-col gap-16">
+						<ImgContainer
+							direction="left"
+							title="Food Explorer"
+							src={foodexplorer}
+							description="Projeto fullstack que possui funcionalidades como: cadastro e autenticação de usuário, upload e edição de imagem do perfil do usuário, registro de notas pessoais no banco de dados, criptografia de senhas e edição das informações pessoais do usuário."
+						/>
+						<ImgContainer
+							direction="right"
+							title="Rocket Notes"
+							src={rocketnotes}
+							description="Projeto fullstack que possui funcionalidades como: cadastro e autenticação de usuário, upload e edição de imagem do perfil do usuário, registro de notas pessoais no banco de dados, criptografia de senhas e edição das informações pessoais do usuário."
+						/>
+					</div>
+				</section>
+			</div>
+			<div className="bg-slate-500 h-1"></div>
+			<section
+				className="
+				bg-gradient-radial from-slate-800 to-black
+			p-12 text-center text-slate-100"
+			>
+				<h2 className="text-[68px] text-center">Contato</h2>
+				<div className="w-full grid grid-cols-10 mb-12">
+					<div className="max-h-72 max-w-48 flex items-center justify-center col-start-1 col-end-4 ">
+						<SiMinutemailer size="100%" color="#86efac" />
+					</div>
+					<div className="flex flex-col justify-center col-start-4 col-end-9 mb-6">
 						<h3 className="text-xl text-left font-medium ml-4 mb-12">
 							Copie meu endereço de email e entre em contato 😉
 						</h3>
 						<div className="w-full grid grid-cols-4">
-							<div className="w-full bg-black rounded-l flex items-center justify-center">
-								<BsMailbox2 color="#4ade80" size="24px" />
+							<div className="w-full bg-slate-200 rounded-tl-xl flex items-center justify-center">
+								<FiMail color="black" size="24px" />
 							</div>
-							<div className="w-full h-16 flex items-center justify-start border-solid border-2 border-black rounded-r-2 font-medium text-xl col-start-2 col-end-5 pl-12">
+							<div
+								ref={emailRef}
+								className="w-full h-16 flex items-center justify-start border-solid border-2 border-slate-200 rounded-tr-xl font-medium text-xl col-start-2 col-end-5 pl-12 transition-all duration-500"
+							>
 								{contactEmail}
 							</div>
 						</div>
 						<button
 							onClick={() => handleCopyEmail(contactEmail)}
-							className="w-full h-12 border-solid border-2 border-green-500 rounded-r text-green-500 font-bold text-xl hover:bg-green-500 hover:text-white transition-all"
+							className="w-full h-14 border-solid border-2 border-green-500 text-green-500 font-bold text-xl hover:bg-green-500 hover:text-white transition-all mt-1 rounded-b-xl"
 						>
 							{copyButton}
 						</button>
