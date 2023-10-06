@@ -11,6 +11,8 @@ import { GoMail } from 'react-icons/go'
 import { FiMail } from 'react-icons/fi'
 import { FaPaperPlane } from 'react-icons/fa'
 import { IoIosPaperPlane } from 'react-icons/io'
+import { BsLinkedin, BsGithub } from 'react-icons/bs'
+import { HiDocumentText } from 'react-icons/hi'
 
 import copy from 'copy-to-clipboard'
 
@@ -60,9 +62,36 @@ export default function Home() {
 					<h1 className="text-[52px] leading-[5rem] font-bold ml-2 mb-4">
 						Olá, sou Lucas Saymon 👋
 					</h1>
-					<h1 className="text-[128px] leading-[5rem] font-bold">
-						DESENVOLVEDOR
-					</h1>
+					<div className="relative flex gap-4">
+						<h1 className="text-[128px] leading-[5rem] font-bold">
+							DESENVOLVEDOR
+						</h1>
+						<div className="absolute -top-20 -right-20 flex flex-col items-end gap-6">
+							<div className="flex gap-8">
+								<a href="https://www.linkedin.com/in/lucas-saymon/">
+									<BsLinkedin
+										class="animate-up hover:-translate-y-2 transition-all"
+										size="56px"
+										color="#23c55e"
+									/>
+								</a>
+								<a href="https://www.github.com/lucassaymon1">
+									<BsGithub
+										class="animate-diagonal hover:-translate-y-2 hover:translate-x-2 transition-all hover:text-green-300"
+										size="60px"
+										color="#23c55e"
+									/>
+								</a>
+							</div>
+							<a href="https://docs.google.com/document/d/1cwg99b3KJI7Ep5wJ5rGKyV4zRkDI5g2ZCbk_FsfKFBg/edit?usp=sharing">
+								<HiDocumentText
+									class="-mr-2 animate-right hover:translate-x-2 transition-all"
+									size="76px"
+									color="#23c55e"
+								/>
+							</a>
+						</div>
+					</div>
 					<div className=" flex flex-row gap-8 mb-[36px]">
 						<h1 className="text-[128px] font-bold  ">FRONTEND</h1>
 						<h1 className="text-[128px] text-green-500">{'</>'}</h1>
