@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
-import { TechSvg, TechImg } from '@/components/TechIcon'
+import { TechSvg } from '@/components/TechIcon'
 import ImgContainer from '@/components/imgContainer'
 import foodexplorer from '../assets/images/foodexplorer.png'
 import rocketnotes from '../assets/images/rocketnotes.png'
@@ -25,7 +25,8 @@ import {
 	Nodejs,
 	Reactjs,
 	Sqlite,
-	Typescript
+	Typescript,
+	StyledComponents
 } from '@/utils/techIcons'
 import { useRef, useState } from 'react'
 
@@ -54,7 +55,7 @@ export default function Home() {
 
 	return (
 		<main className="flex justify-center flex-col text-slate-200">
-			<section className="bg-gradient-radial from-slate-800 to-black flex align-center justify-center h-screen w-screen p-12">
+			<section className="bg-gradient-radial from-slate-800 to-black flex align-center justify-center h-screen w-full p-12">
 				<div className="flex justify-center align-center flex-col pt-10 text-[lightgray]">
 					<h1 className="text-[52px] leading-[5rem] font-bold ml-2 mb-4">
 						Olá, sou Lucas Saymon 👋
@@ -79,21 +80,18 @@ export default function Home() {
 					<h2 className="text-[68px] text-center">Tecnologias</h2>
 
 					<div className="flex flex-row flex-wrap gap-6 justify-center align-center">
-						<TechSvg icon={Javascript} title="Javascript" />
-						<TechSvg icon={Typescript} title="Typescript" />
-						<TechSvg icon={Nextjs} title="Nextjs" />
-						<TechSvg icon={Reactjs} title="Reactjs" />
-						<TechSvg icon={Tailwindcss} title="Tailwindcss" />
-						<TechSvg icon={Nodejs} title="Nodejs" />
-						<TechSvg icon={Sqlite} title="Sqlite" />
+						<TechSvg icon={Javascript} title="JavaScript" />
+						<TechSvg icon={Typescript} title="TypeScript" />
+						<TechSvg icon={Nextjs} title="NextJS" />
+						<TechSvg icon={Reactjs} title="ReactJS" />
+						<TechSvg icon={Tailwindcss} title="Tailwind CSS" />
+						<TechSvg icon={Nodejs} title="NodeJS" />
+						<TechSvg icon={Sqlite} title="SQLite" />
 						<TechSvg icon={Git} title="Git" />
 						<TechSvg icon={GitHub} title="GitHub" />
-						<TechSvg icon={Html} title="Html" />
-						<TechSvg icon={Css} title="Css" />
-						<TechImg
-							src="https://miro.medium.com/v2/resize:fit:318/1*7jRD5QhgARucFKvRHFxpOg.png"
-							title="styled components"
-						/>
+						<TechSvg icon={Html} title="HTML5" />
+						<TechSvg icon={Css} title="CSS3" />
+						<TechSvg icon={StyledComponents} title="Styled-Components" />
 					</div>
 				</section>
 				<section className="p-12 text-center mb-48">
@@ -122,7 +120,7 @@ export default function Home() {
 			>
 				<h2 className="text-[68px] text-center">Contato</h2>
 				<div className="w-full grid grid-cols-10 mb-12">
-					<div className="max-h-72 max-w-48 flex items-center justify-center col-start-1 col-end-4 ">
+					<div className="max-h-72 max-w-48 flex items-center justify-center col-start-1 col-end-4 animate-flying">
 						<SiMinutemailer size="100%" color="#86efac" />
 					</div>
 					<div className="flex flex-col justify-center col-start-4 col-end-9 mb-6">
