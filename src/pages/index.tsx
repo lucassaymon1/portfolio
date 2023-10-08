@@ -13,6 +13,7 @@ import { FaPaperPlane } from 'react-icons/fa'
 import { IoIosPaperPlane } from 'react-icons/io'
 import { BsLinkedin, BsGithub } from 'react-icons/bs'
 import { HiDocumentText } from 'react-icons/hi'
+import NavItem from '@/components/NavItem'
 
 import copy from 'copy-to-clipboard'
 
@@ -57,7 +58,29 @@ export default function Home() {
 
 	return (
 		<main className="flex justify-center flex-col text-slate-200">
-			<section className="bg-gradient-radial from-slate-800 to-black flex align-center justify-center h-screen w-full p-12">
+			<section className="bg-gradient-radial from-slate-800 to-black flex align-center justify-center h-screen w-full p-12 relative">
+				<nav className="flex justify-center absolute top-16 right-36">
+					<ul className="flex flex-row ">
+						<NavItem
+							isLast={false}
+							title="Habilidades"
+							link="#skills"
+							toPage
+						></NavItem>
+						<NavItem
+							isLast={false}
+							title="Projetos"
+							link="#projects"
+							toPage
+						></NavItem>
+						<NavItem
+							isLast={true}
+							title="Contato"
+							link="#contact"
+							toPage
+						></NavItem>
+					</ul>
+				</nav>
 				<div className="flex justify-center align-center flex-col pt-10 text-[lightgray]">
 					<h1 className="text-[52px] leading-[5rem] font-bold ml-2 mb-4">
 						Olá, sou Lucas Saymon 👋
@@ -105,7 +128,7 @@ export default function Home() {
 			</section>
 			<div className="bg-slate-500 h-1"></div>
 			<div className="bg-slate-900">
-				<section className="pt-24">
+				<section className="pt-24" id="skills">
 					<h2 className="text-[68px] text-center">Tecnologias</h2>
 
 					<div className="flex flex-row flex-wrap gap-6 justify-center align-center">
@@ -123,7 +146,7 @@ export default function Home() {
 						<TechSvg icon={StyledComponents} title="Styled-Components" />
 					</div>
 				</section>
-				<section className="p-12 text-center mb-48">
+				<section className="p-12 text-center mb-48" id="projects">
 					<h2 className="text-[68px] text-center">Projetos</h2>
 					<div className="flex flex-col gap-16">
 						<ImgContainer
@@ -145,7 +168,8 @@ export default function Home() {
 			<section
 				className="
 				bg-gradient-radial from-slate-800 to-black
-			p-12 text-center text-slate-100"
+				p-12 text-center text-slate-100"
+				id="contact"
 			>
 				<h2 className="text-[68px] text-center">Contato</h2>
 				<div className="w-full grid grid-cols-10 mb-12">
@@ -175,6 +199,34 @@ export default function Home() {
 						</button>
 					</div>
 				</div>
+				<nav className="flex justify-center">
+					<ul className="flex flex-row ">
+						<NavItem
+							isLast={false}
+							title="GitHub"
+							link="https://www.github.com/lucassaymon1"
+							toPage={false}
+						>
+							<BsGithub size="22px" />
+						</NavItem>
+						<NavItem
+							isLast={false}
+							title="LinkedIn"
+							link="https://www.linkedin.com/in/lucas-saymon/"
+							toPage={false}
+						>
+							<BsLinkedin />
+						</NavItem>
+						<NavItem
+							isLast={true}
+							title="Currículo"
+							link="https://docs.google.com/document/d/1cwg99b3KJI7Ep5wJ5rGKyV4zRkDI5g2ZCbk_FsfKFBg/edit?usp=sharing"
+							toPage={false}
+						>
+							<HiDocumentText size="24px" />
+						</NavItem>
+					</ul>
+				</nav>
 			</section>
 		</main>
 	)
