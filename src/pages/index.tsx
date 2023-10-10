@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
-import { TechSvg } from '@/components/TechIcon'
+import { TechIcon } from '@/components/TechIcon'
 import ImgContainer from '@/components/imgContainer'
 import foodexplorer from '../assets/images/foodexplorer.png'
 import rocketnotes from '../assets/images/rocketnotes.png'
@@ -59,7 +59,10 @@ export default function Home() {
 	return (
 		<main className="flex justify-center flex-col text-slate-200">
 			<section className="bg-gradient-radial from-slate-800 to-black flex align-center justify-center h-screen w-full p-12 relative">
-				<nav className="flex justify-center absolute top-16 right-36">
+				<nav
+					className="flex justify-center absolute top-0 mt-12
+					lg:right-0 lg:mr-16 lg:mt-12"
+				>
 					<ul className="flex flex-row ">
 						<NavItem
 							isLast={false}
@@ -82,14 +85,23 @@ export default function Home() {
 					</ul>
 				</nav>
 				<div className="flex justify-center align-center flex-col pt-10 text-[lightgray]">
-					<h1 className="text-[52px] leading-[5rem] font-bold ml-2 mb-4">
+					<h1
+						className="text-2xl font-bold
+						lg:text-[52px] lg:leading-[5rem] lg:ml-2 lg:mb-4"
+					>
 						Olá, sou Lucas Saymon 👋
 					</h1>
-					<div className="relative flex gap-4">
-						<h1 className="text-[128px] leading-[5rem] font-bold">
+					<div className="relative flex gap-4 ">
+						<h1
+							className=" text-[40px] font-bold leading-[3rem]
+							lg:text-[128px] lg:leading-[5rem]"
+						>
 							DESENVOLVEDOR
 						</h1>
-						<div className="absolute -top-20 -right-20 flex flex-col items-end gap-6">
+						<div
+							className="hidden
+							lg:absolute lg:-top-20 lg:-right-20 lg:flex lg:flex-col lg:items-end lg:gap-6"
+						>
 							<div className="flex gap-8">
 								<a href="https://www.linkedin.com/in/lucas-saymon/">
 									<BsLinkedin
@@ -115,11 +127,27 @@ export default function Home() {
 							</a>
 						</div>
 					</div>
-					<div className=" flex flex-row gap-8 mb-[36px]">
-						<h1 className="text-[128px] font-bold  ">FRONTEND</h1>
-						<h1 className="text-[128px] text-green-500">{'</>'}</h1>
+					<div
+						className=" flex flex-row gap-4 items-center mb-[24px]
+						lg:gap-8 lg:mb-[32px]"
+					>
+						<h1
+							className="text-[40px] font-bold
+						lg:text-[128px]"
+						>
+							FRONTEND
+						</h1>
+						<h1
+							className="text-[40px] text-green-500
+						lg:text-[128px]"
+						>
+							{'</>'}
+						</h1>
 					</div>
-					<p className="text-2xl font-medium max-w-5xl">
+					<p
+						className=" font-medium max-w-5xl
+						lg:text-2xl lg:text-left"
+					>
 						Desenvolvedor web <span>Frontend</span> Freelancer a procura de
 						<span> oportunidades</span> de trabalho para <span>aprimorar </span>
 						minhas habilidades como <span>programador</span>.
@@ -128,26 +156,40 @@ export default function Home() {
 			</section>
 			<div className="bg-slate-500 h-1"></div>
 			<div className="bg-slate-900">
-				<section className="pt-24" id="skills">
-					<h2 className="text-[68px] text-center">Tecnologias</h2>
+				<section className="pt-24 text-center mb-6" id="skills">
+					<h2
+						className="p-12 text-5xl text-center
+						lg:text-[68px]"
+					>
+						Tecnologias
+					</h2>
 
 					<div className="flex flex-row flex-wrap gap-6 justify-center align-center">
-						<TechSvg icon={Javascript} title="JavaScript" />
-						<TechSvg icon={Typescript} title="TypeScript" />
-						<TechSvg icon={Nextjs} title="NextJS" />
-						<TechSvg icon={Reactjs} title="ReactJS" />
-						<TechSvg icon={Tailwindcss} title="Tailwind CSS" />
-						<TechSvg icon={Nodejs} title="NodeJS" />
-						<TechSvg icon={Sqlite} title="SQLite" />
-						<TechSvg icon={Git} title="Git" />
-						<TechSvg icon={GitHub} title="GitHub" />
-						<TechSvg icon={Html} title="HTML5" />
-						<TechSvg icon={Css} title="CSS3" />
-						<TechSvg icon={StyledComponents} title="Styled-Components" />
+						<TechIcon icon={Javascript} title="JavaScript" />
+						<TechIcon icon={Typescript} title="TypeScript" />
+						<TechIcon icon={Nextjs} title="NextJS" />
+						<TechIcon icon={Reactjs} title="ReactJS" />
+						<TechIcon icon={Tailwindcss} title="Tailwind CSS" />
+						<TechIcon icon={Nodejs} title="NodeJS" />
+						<TechIcon icon={Sqlite} title="SQLite" />
+						<TechIcon icon={Git} title="Git" />
+						<TechIcon icon={GitHub} title="GitHub" />
+						<TechIcon icon={Html} title="HTML5" />
+						<TechIcon icon={Css} title="CSS3" />
+						<TechIcon icon={StyledComponents} title="Styled-Components" />
 					</div>
 				</section>
-				<section className="p-12 text-center mb-48" id="projects">
-					<h2 className="text-[68px] text-center">Projetos</h2>
+				<section
+					className=" text-center mb-28
+					lg:p-12 lg:mb-48"
+					id="projects"
+				>
+					<h2
+						className="p-12 text-5xl text-center
+						lg:text-[68px]"
+					>
+						Projetos
+					</h2>
 					<div className="flex flex-col gap-16">
 						<ImgContainer
 							direction="left"
@@ -171,9 +213,20 @@ export default function Home() {
 				p-12 text-center text-slate-100"
 				id="contact"
 			>
-				<h2 className="text-[68px] text-center">Contato</h2>
-				<div className="w-full grid grid-cols-10 mb-12">
-					<div className="max-h-72 max-w-48 flex items-center justify-center col-start-1 col-end-4 animate-flying">
+				<h2
+					className="p-12 text-center text-5xl
+					lg:text-[68px]"
+				>
+					Contato
+				</h2>
+				<div
+					className="w-full  mb-12
+					lg:grid lg:grid-cols-10"
+				>
+					<div
+						className="hidden
+						lg:max-h-72 lg:max-w-48 lg:flex lg:items-center lg:justify-center lg:col-start-1 lg:col-end-4 lg:animate-flying"
+					>
 						<SiMinutemailer size="100%" color="#86efac" />
 					</div>
 					<div className="flex flex-col justify-center col-start-4 col-end-9 mb-6">
@@ -186,14 +239,16 @@ export default function Home() {
 							</div>
 							<div
 								ref={emailRef}
-								className="w-full h-16 flex items-center justify-start border-solid border-2 border-slate-200 rounded-tr-xl font-medium text-xl col-start-2 col-end-5 pl-12 transition-all duration-500"
+								className="w-full h-16 flex items-center justify-start border-solid border-2 border-slate-200 rounded-tr-xl font-medium  transition-all duration-500 col-start-2 col-end-5 pl-4
+									lg:text-xl lg:pl-12"
 							>
 								{contactEmail}
 							</div>
 						</div>
 						<button
 							onClick={() => handleCopyEmail(contactEmail)}
-							className="w-full h-14 border-solid border-2 border-green-500 text-green-500 font-bold text-xl hover:bg-green-500 hover:text-white transition-all mt-1 rounded-b-xl"
+							className="w-full h-14 border-solid border-2 border-green-500 text-green-500 font-bold text-lg hover:bg-green-500 hover:text-white transition-all mt-1 rounded-b-xl
+								lg:text-xl"
 						>
 							{copyButton}
 						</button>
