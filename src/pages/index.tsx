@@ -61,7 +61,7 @@ export default function Home() {
 			<section className="bg-gradient-radial from-slate-800 to-black flex align-center justify-center h-screen w-full p-12 relative">
 				<nav
 					className="flex justify-center absolute top-0 mt-12
-					lg:right-0 lg:mr-16 lg:mt-12"
+					lg:right-0 lg:mr-[3vw] lg:mt-[5vh]"
 				>
 					<ul className="flex flex-row ">
 						<NavItem
@@ -85,67 +85,83 @@ export default function Home() {
 					</ul>
 				</nav>
 				<div className="flex justify-center align-center flex-col pt-10 text-[lightgray]">
-					<h1
-						className="text-2xl font-bold
-						lg:text-[52px] lg:leading-[5rem] lg:ml-2 lg:mb-4"
-					>
-						Olá, sou Lucas Saymon 👋
-					</h1>
-					<div className="relative flex gap-4 ">
+					<div className="w-full flex justify-between items-center">
 						<h1
-							className=" text-[40px] font-bold leading-[3rem]
-							lg:text-[128px] lg:leading-[5rem]"
+							className="text-[5vw] font-bold
+								lg:ml-2 lg:mb-4
+							 xl:text-[52px] xl:leading-[5rem]"
 						>
-							DESENVOLVEDOR
+							Olá, sou Lucas Saymon 👋
 						</h1>
 						<div
-							className="hidden
-							lg:absolute lg:-top-20 lg:-right-20 lg:flex lg:flex-col lg:items-end lg:gap-6"
+							className="hidden relative z-10
+							lg:flex lg:items-center lg:gap-[2vw]"
 						>
-							<div className="flex gap-8">
-								<a href="https://www.linkedin.com/in/lucas-saymon/">
-									<BsLinkedin
-										class="animate-up hover:-translate-y-2 transition-all"
-										size="56px"
+							<a
+								className="max-w-[56px] w-[3vw]"
+								href="https://www.linkedin.com/in/lucas-saymon/"
+							>
+								<BsLinkedin
+									class="hover:-translate-y-2 transition-all"
+									size="100%"
+									color="#23c55e"
+								/>
+							</a>
+							<div className="flex gap-[1vw]">
+								<a
+									className="max-w-[60px] w-[3vw]"
+									href="https://www.github.com/lucassaymon1"
+								>
+									<BsGithub
+										class="hover:-translate-y-2 transition-all hover:text-green-300"
+										size="100%"
 										color="#23c55e"
 									/>
 								</a>
-								<a href="https://www.github.com/lucassaymon1">
-									<BsGithub
-										class="animate-diagonal hover:-translate-y-2 hover:translate-x-2 transition-all hover:text-green-300"
-										size="60px"
+
+								<a
+									className="max-w-[72px] w-[4vw]"
+									href="https://docs.google.com/document/d/1cwg99b3KJI7Ep5wJ5rGKyV4zRkDI5g2ZCbk_FsfKFBg/edit?usp=sharing"
+								>
+									<HiDocumentText
+										class="hover:-translate-y-2 transition-all"
+										size="100%"
 										color="#23c55e"
 									/>
 								</a>
 							</div>
-							<a href="https://docs.google.com/document/d/1cwg99b3KJI7Ep5wJ5rGKyV4zRkDI5g2ZCbk_FsfKFBg/edit?usp=sharing">
-								<HiDocumentText
-									class="-mr-2 animate-right hover:translate-x-2 transition-all"
-									size="76px"
-									color="#23c55e"
-								/>
-							</a>
 						</div>
 					</div>
+
+					<div className="relative w-fit">
+						<h1
+							className="w-fit text-[10vw] leading-[10vw] font-bold max-w-[112px]
+							xl:text-[112px] 2xl:text-[128px] lg:leading-[5rem]"
+						>
+							DESENVOLVEDOR
+						</h1>
+					</div>
+
 					<div
-						className=" flex flex-row gap-4 items-center mb-[24px]
-						lg:gap-8 lg:mb-[32px]"
+						className=" flex flex-row gap-4 items-center mb-10
+						lg:gap-8 lg:mb-10"
 					>
 						<h1
-							className="text-[40px] font-bold
-						lg:text-[128px]"
+							className="text-[10vw] font-bold
+							xl:text-[112px] 2xl:text-[128px]"
 						>
 							FRONTEND
 						</h1>
 						<h1
-							className="text-[40px] text-green-500
-						lg:text-[128px]"
+							className="text-[10vw] text-green-500
+							xl:text-[112px] 2xl:text-[128px]"
 						>
 							{'</>'}
 						</h1>
 					</div>
 					<p
 						className=" font-medium max-w-5xl
+						md:text-xl
 						lg:text-2xl lg:text-left"
 					>
 						Desenvolvedor web <span>Frontend</span> Freelancer a procura de
@@ -157,12 +173,7 @@ export default function Home() {
 			<div className="bg-slate-500 h-1"></div>
 			<div className="bg-slate-900">
 				<section className="pt-24 text-center mb-6" id="skills">
-					<h2
-						className="p-12 text-5xl text-center
-						lg:text-[68px]"
-					>
-						Tecnologias
-					</h2>
+					<h2 className="p-12 text-4xl lg:text-5xl text-center">Tecnologias</h2>
 
 					<div className="flex flex-row flex-wrap gap-6 justify-center align-center">
 						<TechIcon icon={Javascript} title="JavaScript" />
@@ -181,27 +192,24 @@ export default function Home() {
 				</section>
 				<section
 					className=" text-center mb-28
-					lg:p-12 lg:mb-48"
+					md:p-12 lg:mb-48"
 					id="projects"
 				>
-					<h2
-						className="p-12 text-5xl text-center
-						lg:text-[68px]"
-					>
-						Projetos
-					</h2>
+					<h2 className="p-12 text-4xl lg:text-5xl text-center">Projetos</h2>
 					<div className="flex flex-col gap-16">
 						<ImgContainer
+							link="https://lsfoodexplorer.netlify.app"
 							direction="left"
 							title="Food Explorer"
 							src={foodexplorer}
-							description="Projeto fullstack que possui funcionalidades como: cadastro e autenticação de usuário, upload e edição de imagem do perfil do usuário, registro de notas pessoais no banco de dados, criptografia de senhas e edição das informações pessoais do usuário."
+							description="Um site que oferece uma interface responsiva e a função de expor um cardápio de pratos de um restaurante de forma online, onde o usuário comum pode pesquisar e visualizar os pratos disponíveis, enquanto os administradores podem cadastrar novos pratos, assim como atualizar e excluir pratos já existentes."
 						/>
 						<ImgContainer
+							link="https://lsrocketnotes.netlify.app"
 							direction="right"
 							title="Rocket Notes"
 							src={rocketnotes}
-							description="Projeto fullstack que possui funcionalidades como: cadastro e autenticação de usuário, upload e edição de imagem do perfil do usuário, registro de notas pessoais no banco de dados, criptografia de senhas e edição das informações pessoais do usuário."
+							description="Uma aplicação web que permite que o usuário crie notas pessoais. O site conta com sistema de cadastro, login e autenticação de usuário, além de funcionalidades de busca por notas já criadas, como filtragem por barra de pesquisa ou por tags."
 						/>
 					</div>
 				</section>
@@ -214,8 +222,8 @@ export default function Home() {
 				id="contact"
 			>
 				<h2
-					className="p-12 text-center text-5xl
-					lg:text-[68px]"
+					className="p-12 pb-0 text-4xl text-center lg:text-5xl
+					 lg:pb-12"
 				>
 					Contato
 				</h2>
@@ -225,21 +233,33 @@ export default function Home() {
 				>
 					<div
 						className="hidden
-						lg:max-h-72 lg:max-w-48 lg:flex lg:items-center lg:justify-center lg:col-start-1 lg:col-end-4 lg:animate-flying"
+						lg:h-[15vw] lg:flex lg:items-center lg:justify-center lg:col-start-1 lg:col-end-4 lg:animate-flying"
 					>
 						<SiMinutemailer size="100%" color="#86efac" />
 					</div>
-					<div className="flex flex-col justify-center col-start-4 col-end-9 mb-6">
-						<h3 className="text-xl text-left font-medium ml-4 mb-12">
-							Copie meu endereço de email e entre em contato 😉
-						</h3>
+
+					<div className="flex flex-col justify-center col-start-4 col-end-9 mb-16">
+						<div className="flex flex-col gap-14 items-center justify-center mb-12 lg:mb-0 lg:">
+							<div
+								className="
+								w-[30vw] max-w-[200px] flex items-center justify-center animate-flying
+								lg:hidden"
+							>
+								<SiMinutemailer size="100%" color="#86efac" />
+							</div>
+							<div className="w-full">
+								<h3 className="text-xl text-left font-medium lg:ml-4 lg:mb-12">
+									Copie meu endereço de email e entre em contato 😉
+								</h3>
+							</div>
+						</div>
 						<div className="w-full grid grid-cols-4">
 							<div className="w-full bg-slate-200 rounded-tl-xl flex items-center justify-center">
 								<FiMail color="black" size="24px" />
 							</div>
 							<div
 								ref={emailRef}
-								className="w-full h-16 flex items-center justify-start border-solid border-2 border-slate-200 rounded-tr-xl font-medium  transition-all duration-500 col-start-2 col-end-5 pl-4
+								className="w-full h-16 flex items-center justify-start border-solid border-2 border-slate-200 rounded-tr-xl font-medium  transition-all duration-500 col-start-2 col-end-5 px-4 overflow-hidden
 									lg:text-xl lg:pl-12"
 							>
 								{contactEmail}
