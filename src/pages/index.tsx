@@ -13,9 +13,7 @@ import { FaPaperPlane } from 'react-icons/fa'
 import { IoIosPaperPlane } from 'react-icons/io'
 import { BsLinkedin, BsGithub } from 'react-icons/bs'
 import { HiDocumentText } from 'react-icons/hi'
-import NavItem from '@/components/NavItem'
-
-import copy from 'copy-to-clipboard'
+import { NavContactItem, NavPageItem } from '@/components/NavItem'
 
 import {
 	Css,
@@ -64,24 +62,19 @@ export default function Home() {
 					lg:right-0 lg:mr-[3vw] lg:mt-[5vh]"
 				>
 					<ul className="flex flex-row ">
-						<NavItem
+						<NavPageItem
 							isLast={false}
 							title="Habilidades"
 							link="#skills"
 							toPage
-						></NavItem>
-						<NavItem
+						/>
+						<NavPageItem
 							isLast={false}
 							title="Projetos"
 							link="#projects"
 							toPage
-						></NavItem>
-						<NavItem
-							isLast={true}
-							title="Contato"
-							link="#contact"
-							toPage
-						></NavItem>
+						/>
+						<NavPageItem isLast={true} title="Contato" link="#contact" toPage />
 					</ul>
 				</nav>
 				<div className="flex justify-center align-center flex-col pt-10 text-[lightgray]">
@@ -276,30 +269,30 @@ export default function Home() {
 				</div>
 				<nav className="flex justify-center">
 					<ul className="flex flex-row ">
-						<NavItem
+						<NavContactItem
 							isLast={false}
 							title="GitHub"
 							link="https://www.github.com/lucassaymon1"
 							toPage={false}
 						>
 							<BsGithub size="22px" />
-						</NavItem>
-						<NavItem
+						</NavContactItem>
+						<NavContactItem
 							isLast={false}
 							title="LinkedIn"
 							link="https://www.linkedin.com/in/lucas-saymon/"
 							toPage={false}
 						>
 							<BsLinkedin />
-						</NavItem>
-						<NavItem
+						</NavContactItem>
+						<NavContactItem
 							isLast={true}
 							title="Currículo"
 							link="https://docs.google.com/document/d/1cwg99b3KJI7Ep5wJ5rGKyV4zRkDI5g2ZCbk_FsfKFBg/edit?usp=sharing"
 							toPage={false}
 						>
 							<HiDocumentText size="24px" />
-						</NavItem>
+						</NavContactItem>
 					</ul>
 				</nav>
 			</section>
