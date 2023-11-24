@@ -22,11 +22,11 @@ function ImgContainer({
 		<a href={link} target="_blank">
 			<div
 				className={`
-					bg-slate-900 py-12 px-4 mx-6 ${
+					dark:bg-slate-900 bg-slate-200 py-12 px-4 mx-6 mb-4 ${
 						direction === 'left'
 							? 'lg:flex-row 2xl:mr-32'
 							: 'lg:flex-row-reverse 2xl:ml-32'
-					} justify-between gap-12 shadow-md border border-slate-500 hover:bg-slate-800 transition-all
+					} justify-between gap-12 shadow-lg border dark:border-slate-500 border-slate-400 dark:hover:bg-slate-800 hover:bg-slate-300 transition-all
 						lg:p-12 xl:flex
 					`}
 			>
@@ -39,7 +39,7 @@ function ImgContainer({
 
 				<div className="">
 					<h3
-						className="text-3xl mt-12 mb-10 text-green-500 border-b border-slate-500 pb-4 
+						className="text-3xl mt-12 mb-10 font-medium text-green-light dark:text-green-dark dark:font-normal border-b dark:border-slate-500 border-slate-400 pb-4 
 					lg:mx-14 lg:text-4xl lg:mb-14"
 					>
 						{title}
@@ -47,7 +47,7 @@ function ImgContainer({
 
 					<div className="">
 						<p
-							className="text-md mb-12 text-slate-200 w-fit
+							className="text-md mb-12 dark:text-slate-300 text-slate-600 dark:font-normal font-medium w-fit
 							lg:text-lg lg:mb-16"
 						>
 							{description}

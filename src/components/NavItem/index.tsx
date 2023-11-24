@@ -22,11 +22,13 @@ export function NavContactItem({
 }: NavContactItemProps) {
 	return (
 		<li
-			className={`px-4 ${!isLast && 'border-r-2'}
+			className={`dark:border-slate-300 border-slate-800 px-4 ${
+				!isLast && 'border-r-2'
+			}
 			lg:px-6`}
 		>
 			<a
-				className="text-lg flex gap-2 items-center hover:text-green-500 transition-all
+				className="text-lg font-medium flex gap-2 items-center hover:text-green-light dark:hover:text-green-dark transition-all
 					lg:gap-3 lg:text-xl"
 				target={toPage ? '' : '_blank'}
 				href={link}
@@ -41,11 +43,13 @@ export function NavContactItem({
 export function NavPageItem({ title, isLast, link, toPage }: NavPageItemProps) {
 	return (
 		<li
-			className={`px-4 ${!isLast && 'border-r-2'}
+			className={`px-4 dark:border-slate-300 border-slate-800 ${
+				!isLast && 'border-r-2'
+			}
 			lg:px-6`}
 		>
 			<a
-				className="text-lg flex gap-2 items-center hover:text-green-500 transition-all
+				className="text-lg font-medium flex gap-2 items-center hover:text-green-600 dark:hover:text-green-dark transition-all
 					lg:gap-3 lg:text-xl"
 				target={toPage ? '' : '_blank'}
 				href={link}

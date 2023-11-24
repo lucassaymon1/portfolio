@@ -1,12 +1,23 @@
 import type { Config } from 'tailwindcss'
+const colors = require('tailwindcss/colors')
+console.log(colors.green)
 
 const config: Config = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    "./node_modules/flowbite/**/*.js",
   ],
+  darkMode: 'class',
   theme: {
+    colors: {
+      'green-dark': colors.green[500],
+      'green-light': colors.emerald[600],
+      green: colors.green,
+      slate: colors.slate,
+      emerald: colors.emerald
+    },
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -39,6 +50,8 @@ const config: Config = {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('flowbite/plugin')
+  ],
 }
 export default config

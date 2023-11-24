@@ -1,9 +1,11 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
-import { TechIcon } from '@/components/TechIcon'
+import { SkillSection } from '@/components/SkillSection'
 import ImgContainer from '@/components/imgContainer'
+import Span from '@/components/Span'
 import foodexplorer from '../assets/images/foodexplorer.png'
 import rocketnotes from '../assets/images/rocketnotes.png'
+import avatar from '../assets/images/profile.png'
 import { BsMailbox2 } from 'react-icons/bs'
 import { SiMinutemailer } from 'react-icons/si'
 import { GiMailbox } from 'react-icons/gi'
@@ -14,49 +16,139 @@ import { IoIosPaperPlane } from 'react-icons/io'
 import { BsLinkedin, BsGithub } from 'react-icons/bs'
 import { HiDocumentText } from 'react-icons/hi'
 import { NavContactItem, NavPageItem } from '@/components/NavItem'
+import { StaticImageData } from 'next/image'
+import { SectionTitle } from '@/components/SectionTitle'
 
-import {
-	Css,
-	Html,
-	Javascript,
-	Git,
-	GitHub,
-	Tailwindcss,
-	Nextjs,
-	Nodejs,
-	Reactjs,
-	Sqlite,
-	Typescript,
-	StyledComponents
-} from '@/utils/techIcons'
-import { useRef, useState } from 'react'
+//icons for dark mode
+import { RiSunFill, RiMoonFill } from 'react-icons/ri'
+import { useEffect, useRef, useState } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
 	const [copyEmail, setCopyEmail] = useState('')
 	const [copyButton, setCopyButton] = useState('Copiar')
+
+	const [theme, setTheme] = useState('')
+
 	const contactEmail = 'lucassaymon.dev@gmail.com'
 	const emailRef = useRef<HTMLDivElement | null>(null)
 
+	useEffect(() => {
+		const savedTheme = localStorage.getItem('theme')
+
+		if (!savedTheme) {
+			if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+				setTheme('dark')
+			} else {
+				setTheme('light')
+			}
+			localStorage.setItem('theme', theme)
+		} else {
+			setTheme(savedTheme)
+		}
+	}, [])
+
+	useEffect(() => {
+		if (theme === 'dark') {
+			document.documentElement.classList.add('dark')
+		} else {
+			document.documentElement.classList.remove('dark')
+		}
+	}, [theme])
+
+	function handleTheme() {
+		const newTheme = theme === 'dark' ? 'light' : 'dark'
+		setTheme(newTheme)
+		localStorage.setItem('theme', newTheme)
+	}
+
 	function handleCopyEmail(email: string) {
+		const bgColor = theme === 'dark' ? 'bg-green-dark' : 'bg-green-light'
 		setCopyEmail(email)
 		navigator.clipboard.writeText(copyEmail)
 
-		emailRef.current?.classList.add('bg-green-700')
+		emailRef.current?.classList.add(bgColor)
 		setTimeout(() => {
-			emailRef.current?.classList.remove('bg-green-700')
+			emailRef.current?.classList.remove(bgColor)
 		}, 500)
 
-		setCopyButton('copiado!')
+		setCopyButton('Email copiado!')
 		setTimeout(() => {
-			setCopyButton('copiar')
+			setCopyButton('Copiar')
 		}, 4000)
 	}
 
 	return (
-		<main className="flex justify-center flex-col text-slate-200">
-			<section className="bg-gradient-radial from-slate-800 to-black flex align-center justify-center h-screen w-full p-12 relative">
+		<main className="flex justify-center flex-col">
+			<section className="bg-gradient-radial dark:from-slate-800 from-slate-50 dark:to-black to-slate-400 flex align-center justify-center h-screen w-full p-12 relative dark:text-slate-200 text-slate-800">
+				<button
+					className="absolute left-6 top-10 w-8 xl:w-10 lx:left-16 xl:top-8"
+					onClick={handleTheme}
+				>
+					{theme && theme === 'light' ? (
+						<RiMoonFill
+							size="100%"
+							className="moonIcon hover:text-emerald-700 transition-all"
+						/>
+					) : (
+						<RiSunFill
+							size="100%"
+							className="sunIcon hover:text-green-dark transition-all"
+						/>
+					)}
+				</button>
+
+				<div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 absolute top-0 mt-12 right-0 mr-12">
+					<button
+						data-collapse-toggle="navbar-hamburger"
+						type="button"
+						className="inline-flex items-center justify-center p-2 w-10 h-10 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+						aria-controls="navbar-hamburger"
+						aria-expanded="false"
+					>
+						<span className="sr-only">Open main menu</span>
+						<svg
+							className="w-5 h-5"
+							aria-hidden="true"
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 17 14"
+						>
+							<path
+								stroke="currentColor"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M1 1h15M1 7h15M1 13h15"
+							/>
+						</svg>
+					</button>
+					<div className="hidden w-full" id="navbar-hamburger">
+						<ul className="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+							<NavPageItem
+								isLast={false}
+								title="Habilidades"
+								link="#skills"
+								toPage
+							/>
+							<NavPageItem
+								isLast={false}
+								title="Projetos"
+								link="#projects"
+								toPage
+							/>
+							<NavPageItem isLast={false} title="Sobre" link="#about" toPage />
+							<NavPageItem
+								isLast={true}
+								title="Contato"
+								link="#contact"
+								toPage
+							/>
+						</ul>
+					</div>
+				</div>
+
 				<nav
 					className="flex justify-center absolute top-0 mt-12
 					lg:right-0 lg:mr-[3vw] lg:mt-[5vh]"
@@ -74,10 +166,11 @@ export default function Home() {
 							link="#projects"
 							toPage
 						/>
+						<NavPageItem isLast={false} title="Sobre" link="#about" toPage />
 						<NavPageItem isLast={true} title="Contato" link="#contact" toPage />
 					</ul>
 				</nav>
-				<div className="flex justify-center align-center flex-col pt-10 text-[lightgray]">
+				<div className="flex justify-center align-center flex-col pt-10 dark:text-[lightgray] text-slate-700">
 					<div className="w-full flex justify-between items-center">
 						<h1
 							className="text-[5vw] font-bold
@@ -87,39 +180,39 @@ export default function Home() {
 							Olá, sou Lucas Saymon 👋
 						</h1>
 						<div
-							className="hidden relative z-10
+							className="hidden relative z-10 text-green-light dark:text-green-dark
 							lg:flex lg:items-center lg:gap-[2vw]"
 						>
 							<a
 								className="max-w-[56px] w-[3vw]"
 								href="https://www.linkedin.com/in/lucas-saymon/"
+								target="_blank"
 							>
 								<BsLinkedin
-									class="hover:-translate-y-2 transition-all"
+									class="hover:-translate-y-2 transition-all hover:text-green-300"
 									size="100%"
-									color="#23c55e"
 								/>
 							</a>
 							<div className="flex gap-[1vw]">
 								<a
 									className="max-w-[60px] w-[3vw]"
 									href="https://www.github.com/lucassaymon1"
+									target="_blank"
 								>
 									<BsGithub
 										class="hover:-translate-y-2 transition-all hover:text-green-300"
 										size="100%"
-										color="#23c55e"
 									/>
 								</a>
 
 								<a
 									className="max-w-[72px] w-[4vw]"
 									href="https://docs.google.com/document/d/1cwg99b3KJI7Ep5wJ5rGKyV4zRkDI5g2ZCbk_FsfKFBg/edit?usp=sharing"
+									target="_blank"
 								>
 									<HiDocumentText
-										class="hover:-translate-y-2 transition-all"
+										class="hover:-translate-y-2 transition-all hover:text-green-300"
 										size="100%"
-										color="#23c55e"
 									/>
 								</a>
 							</div>
@@ -146,7 +239,7 @@ export default function Home() {
 							FRONTEND
 						</h1>
 						<h1
-							className="text-[10vw] text-green-500
+							className="text-[10vw] text-green-light dark:text-green-dark
 							xl:text-[112px] 2xl:text-[128px]"
 						>
 							{'</>'}
@@ -157,38 +250,25 @@ export default function Home() {
 						md:text-xl
 						lg:text-2xl lg:text-left"
 					>
-						Desenvolvedor web <span>Frontend</span> Freelancer a procura de
-						<span> oportunidades</span> de trabalho para <span>aprimorar </span>
-						minhas habilidades como <span>programador</span>.
+						Desenvolvedor web <Span>Frontend</Span> a procura de
+						<Span> oportunidades</Span> de trabalho para <Span>aprimorar </Span>
+						minhas habilidades como <Span>programador</Span>.
 					</p>
 				</div>
 			</section>
 			<div className="bg-slate-500 h-1"></div>
-			<div className="bg-slate-900">
-				<section className="pt-24 text-center mb-6" id="skills">
-					<h2 className="p-12 text-4xl lg:text-5xl text-center">Tecnologias</h2>
+			<div className="dark:bg-slate-900 bg-slate-200">
+				<section className="pt-24 text-center mb-6 lg:mx-16" id="skills">
+					<SectionTitle title="Habilidades" custom="" />
 
-					<div className="flex flex-row flex-wrap gap-6 justify-center align-center">
-						<TechIcon icon={Javascript} title="JavaScript" />
-						<TechIcon icon={Typescript} title="TypeScript" />
-						<TechIcon icon={Nextjs} title="NextJS" />
-						<TechIcon icon={Reactjs} title="ReactJS" />
-						<TechIcon icon={Tailwindcss} title="Tailwind CSS" />
-						<TechIcon icon={Nodejs} title="NodeJS" />
-						<TechIcon icon={Sqlite} title="SQLite" />
-						<TechIcon icon={Git} title="Git" />
-						<TechIcon icon={GitHub} title="GitHub" />
-						<TechIcon icon={Html} title="HTML5" />
-						<TechIcon icon={Css} title="CSS3" />
-						<TechIcon icon={StyledComponents} title="Styled-Components" />
-					</div>
+					<SkillSection theme={theme} />
 				</section>
 				<section
-					className=" text-center mb-28
-					md:p-12 lg:mb-48"
+					className=" text-center
+					md:p-12 md:pb-0"
 					id="projects"
 				>
-					<h2 className="p-12 text-4xl lg:text-5xl text-center">Projetos</h2>
+					<SectionTitle title="Projetos" custom="mt-20 lg:mt-0" />
 					<div className="flex flex-col gap-16">
 						<ImgContainer
 							link="https://lsfoodexplorer.netlify.app"
@@ -207,19 +287,62 @@ export default function Home() {
 					</div>
 				</section>
 			</div>
+			<section
+				className="dark:bg-slate-900 bg-slate-200 pt-24 pb-36 md:pt-48 md:px-12 lg:px-16"
+				id="about"
+			>
+				<SectionTitle
+					title="Sobre mim"
+					custom="lg:hidden text-4xl border-b border-slate-500 pb-6"
+				/>
+				<div
+					className="flex gap-16 flex-col justify-center mx-12 items-center
+				lg:flex-row lg:mx-0"
+				>
+					<div className="h-full p-6 border border-slate-500 shadow-lg lg:p-8">
+						<Image
+							className="rounded-2xl w-56 shadow-md sm:w-72 md:w-80 lg:w-96"
+							src={avatar}
+							alt="Minha foto de perfil"
+						/>
+					</div>
+					<div className="lg:w-1/2">
+						<SectionTitle
+							title="Sobre mim"
+							custom="hidden lg:text-center lg:text-4xl lg:border-b lg:border-slate-500 lg:pb-4 lg:mx-24 lg:block lg:pt-0"
+						/>
+
+						<div className="flex items-center ">
+							<p className="text-lg text-justify font-medium text-slate-700 dark:text-slate-400">
+								Olá, me chamo <i>Lucas Saymon</i> e sou Desenvolvedor Front-end
+								com foco em tecnologias como <Span>ReactJS</Span>,{' '}
+								<Span>{'JavaScript (ES6)'}</Span>,{' '}
+								<Span>Styled Components</Span>, <Span>HTML5</Span> e{' '}
+								<Span>CSS3</Span>. Estou na área de programação com foco em
+								Desenvolvimento Web desde Junho de 2022, desde então sigo
+								aprimorando minhas habilidades técnicas na prática com a criação
+								de aplicações responsivas e funcionais. Também estou
+								familiarizado com o desenvolvimento Back-end com{' '}
+								<Span>NodeJS</Span> e <Span>SQLite</Span>, onde já desenvolvi{' '}
+								<Span>APIs REST</Span> que mantém uma comunicação estável com o
+								Front-end. Atualmente expandindo minhas habilidades estudando{' '}
+								<Span>TypeScript</Span> e frameworks de estilização como{' '}
+								<Span>TailwindCSS</Span> e <Span>ChakraUI</Span>. Estou sempre
+								interessado em aprender novas habilidades e tecnologias que me
+								ajudem a aumentar meu poder de ação em projetos reais.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
 			<div className="bg-slate-500 h-1"></div>
 			<section
 				className="
-				bg-gradient-radial from-slate-800 to-black
-				p-12 text-center text-slate-100"
+				bg-gradient-radial dark:from-slate-800 from-slate-100 dark:to-black to-slate-400
+				p-12 text-center dark:text-slate-100 text-slate-800"
 				id="contact"
 			>
-				<h2
-					className="p-12 pb-0 text-4xl text-center lg:text-5xl
-					 lg:pb-12"
-				>
-					Contato
-				</h2>
+				<SectionTitle title="Contato" custom="" />
 				<div
 					className="w-full  mb-12
 					lg:grid lg:grid-cols-10"
@@ -228,7 +351,10 @@ export default function Home() {
 						className="hidden
 						lg:h-[15vw] lg:flex lg:items-center lg:justify-center lg:col-start-1 lg:col-end-4 lg:animate-flying"
 					>
-						<SiMinutemailer size="100%" color="#86efac" />
+						<SiMinutemailer
+							size="100%"
+							className="dark:text-[#86efac] text-green-light"
+						/>
 					</div>
 
 					<div className="flex flex-col justify-center col-start-4 col-end-9 mb-16">
@@ -238,21 +364,24 @@ export default function Home() {
 								w-[30vw] max-w-[200px] flex items-center justify-center animate-flying
 								lg:hidden"
 							>
-								<SiMinutemailer size="100%" color="#86efac" />
+								<SiMinutemailer
+									size="100%"
+									className="dark:text-[#86efac] text-green-light"
+								/>
 							</div>
 							<div className="w-full">
 								<h3 className="text-xl text-left font-medium lg:ml-4 lg:mb-12">
-									Copie meu endereço de email e entre em contato 😉
+									Copie meu endereço de email e entre em contato. 😉
 								</h3>
 							</div>
 						</div>
 						<div className="w-full grid grid-cols-4">
-							<div className="w-full bg-slate-200 rounded-tl-xl flex items-center justify-center">
-								<FiMail color="black" size="24px" />
+							<div className="w-full dark:bg-slate-200 bg-slate-800 rounded-tl-xl flex items-center justify-center">
+								<FiMail className="dark:text-black text-white" size="24px" />
 							</div>
 							<div
 								ref={emailRef}
-								className="w-full h-16 flex items-center justify-start border-solid border-2 border-slate-200 rounded-tr-xl font-medium  transition-all duration-500 col-start-2 col-end-5 px-4 overflow-hidden
+								className="w-full h-16 flex items-center justify-start border-solid border-2 dark:border-slate-200 border-slate-800 rounded-tr-xl font-medium  transition-all duration-500 col-start-2 col-end-5 px-4 overflow-hidden
 									lg:text-xl lg:pl-12"
 							>
 								{contactEmail}
@@ -260,7 +389,7 @@ export default function Home() {
 						</div>
 						<button
 							onClick={() => handleCopyEmail(contactEmail)}
-							className="w-full h-14 border-solid border-2 border-green-500 text-green-500 font-bold text-lg hover:bg-green-500 hover:text-white transition-all mt-1 rounded-b-xl
+							className="w-full h-14 border-solid border-2 border-green-light text-green-light font-bold text-lg hover:bg-green-light  transition-all mt-1 rounded-b-xl dark:text-green-dark dark:border-green-dark dark:hover:bg-green-dark hover:text-white dark:hover:text-white
 								lg:text-xl"
 						>
 							{copyButton}
