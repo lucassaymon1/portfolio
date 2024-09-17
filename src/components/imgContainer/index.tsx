@@ -9,6 +9,8 @@ type ImgContainerProps = {
 	direction: string
 	description: string
 	link: string
+	hasTemplate: boolean
+	personalTags?: boolean
 }
 
 function ImgContainer({
@@ -16,7 +18,9 @@ function ImgContainer({
 	title,
 	direction,
 	description,
-	link
+	link,
+	hasTemplate,
+	personalTags
 }: ImgContainerProps) {
 	return (
 		<a href={link} target="_blank">
@@ -31,8 +35,10 @@ function ImgContainer({
 					`}
 			>
 				<div
-					className=" flex items-center justify-center
-					lg:w-[80vw] lg:min-w-[550px]"
+					className={` flex items-center justify-center
+					lg:w-[80vw] lg:min-w-[550px] ${
+						hasTemplate ? '' : 'rounded-md border-4 border-slate-300'
+					}`}
 				>
 					<Image src={src} alt="Projeto Food Explorer" />
 				</div>
@@ -52,15 +58,25 @@ function ImgContainer({
 						>
 							{description}
 						</p>
-						<div className="flex justify-center align-center flex-wrap gap-2">
-							<Tag title="ReactJS" />
-							<Tag title="JavaScript" />
-							<Tag title="NodeJS" />
-							<Tag title="SQLite" />
-							<Tag title="HTML5" />
-							<Tag title="CSS3" />
-							<Tag title="Styled-Components" />
-						</div>
+						{!personalTags ? (
+							<div className="flex justify-center align-center flex-wrap gap-2">
+								<Tag title="ReactJS" />
+								<Tag title="JavaScript" />
+								<Tag title="NodeJS" />
+								<Tag title="SQLite" />
+								<Tag title="HTML5" />
+								<Tag title="CSS3" />
+								<Tag title="Styled-Components" />
+							</div>
+						) : (
+							<div className="flex justify-center align-center flex-wrap gap-2">
+								<Tag title="WordPress" />
+								<Tag title="Elementor" />
+								<Tag title="JavaScript" />
+								<Tag title="HTML5" />
+								<Tag title="CSS3" />
+							</div>
+						)}
 					</div>
 				</div>
 			</div>

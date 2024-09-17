@@ -5,6 +5,7 @@ import ImgContainer from '@/components/imgContainer'
 import Span from '@/components/Span'
 import foodexplorer from '../assets/images/foodexplorer.png'
 import rocketnotes from '../assets/images/rocketnotes.png'
+import WRlinkpage from '../assets/images/WRlinkpage.png'
 import avatar from '../assets/images/profile.png'
 import { BsMailbox2 } from 'react-icons/bs'
 import { SiMinutemailer } from 'react-icons/si'
@@ -99,56 +100,6 @@ export default function Home() {
 					)}
 				</button>
 
-				<div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 absolute top-0 mt-12 right-0 mr-12">
-					<button
-						data-collapse-toggle="navbar-hamburger"
-						type="button"
-						className="inline-flex items-center justify-center p-2 w-10 h-10 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-						aria-controls="navbar-hamburger"
-						aria-expanded="false"
-					>
-						<span className="sr-only">Open main menu</span>
-						<svg
-							className="w-5 h-5"
-							aria-hidden="true"
-							xmlns="http://www.w3.org/2000/svg"
-							fill="none"
-							viewBox="0 0 17 14"
-						>
-							<path
-								stroke="currentColor"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M1 1h15M1 7h15M1 13h15"
-							/>
-						</svg>
-					</button>
-					<div className="hidden w-full" id="navbar-hamburger">
-						<ul className="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
-							<NavPageItem
-								isLast={false}
-								title="Habilidades"
-								link="#skills"
-								toPage
-							/>
-							<NavPageItem
-								isLast={false}
-								title="Projetos"
-								link="#projects"
-								toPage
-							/>
-							<NavPageItem isLast={false} title="Sobre" link="#about" toPage />
-							<NavPageItem
-								isLast={true}
-								title="Contato"
-								link="#contact"
-								toPage
-							/>
-						</ul>
-					</div>
-				</div>
-
 				<nav
 					className="flex justify-center absolute top-0 mt-12
 					lg:right-0 lg:mr-[3vw] lg:mt-[5vh]"
@@ -236,7 +187,7 @@ export default function Home() {
 							className="text-[10vw] font-bold
 							xl:text-[112px] 2xl:text-[128px]"
 						>
-							FRONTEND
+							FULL-STACK
 						</h1>
 						<h1
 							className="text-[10vw] text-green-light dark:text-green-dark
@@ -250,8 +201,8 @@ export default function Home() {
 						md:text-xl
 						lg:text-2xl lg:text-left"
 					>
-						Desenvolvedor web <Span>Frontend</Span> a procura de
-						<Span> oportunidades</Span> de trabalho para <Span>aprimorar </Span>
+						Desenvolvedor web <Span>Full-Stack</Span> a procura de
+						<Span> oportunidades</Span> para <Span>aprimorar </Span>
 						minhas habilidades como <Span>programador</Span>.
 					</p>
 				</div>
@@ -276,6 +227,7 @@ export default function Home() {
 							title="Food Explorer"
 							src={foodexplorer}
 							description="Um site que oferece uma interface responsiva e a função de expor um cardápio de pratos de um restaurante de forma online, onde o usuário comum pode pesquisar e visualizar os pratos disponíveis, enquanto os administradores podem cadastrar novos pratos, assim como atualizar e excluir pratos já existentes."
+							hasTemplate={true}
 						/>
 						<ImgContainer
 							link="https://lsrocketnotes.netlify.app"
@@ -283,6 +235,16 @@ export default function Home() {
 							title="Rocket Notes"
 							src={rocketnotes}
 							description="Uma aplicação web que permite que o usuário crie notas pessoais. O site conta com sistema de cadastro, login e autenticação de usuário, além de funcionalidades de busca por notas já criadas, como filtragem por barra de pesquisa ou por tags."
+							hasTemplate={true}
+						/>
+						<ImgContainer
+							link="https://site.wrlink.com.br"
+							direction="left"
+							title="Site WRlink"
+							src={WRlinkpage}
+							description="Site institucional desenvolvido para a empresa WR Link Telecom. O site conta com animações de elementos, design moderno e layout responsivo para aparelhos desktop e mobile."
+							hasTemplate={false}
+							personalTags={true}
 						/>
 					</div>
 				</section>
@@ -314,7 +276,7 @@ export default function Home() {
 
 						<div className="flex items-center ">
 							<p className="text-lg text-justify font-medium text-slate-700 dark:text-slate-400">
-								Olá, me chamo <i>Lucas Saymon</i> e sou Desenvolvedor Front-end
+								Olá, me chamo <i>Lucas Saymon</i> e sou Desenvolvedor Full-Stack
 								com foco em tecnologias como <Span>ReactJS</Span>,{' '}
 								<Span>{'JavaScript (ES6)'}</Span>,{' '}
 								<Span>Styled Components</Span>, <Span>HTML5</Span> e{' '}
