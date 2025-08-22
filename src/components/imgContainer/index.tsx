@@ -85,7 +85,7 @@ function ImgContainer({
 						</p>
 						<div className="flex justify-center align-center flex-wrap gap-2">
 							{projectTags[project].map((tag) => (
-								<Tag title={tag} />
+								<Tag title={tag} key={`${project}${tag}`} />
 							))}
 						</div>
 					</div>
