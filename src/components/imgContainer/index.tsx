@@ -11,6 +11,31 @@ type ImgContainerProps = {
 	link: string
 	hasTemplate: boolean
 	personalTags?: boolean
+	project: string
+}
+
+const projectTags: Record<string, string[]> = {
+	foodexplorer: [
+		'ReactJS',
+		'JavaScript',
+		'NodeJS',
+		'SQLite',
+		'HTML5',
+		'CSS3',
+		'Styled-Components',
+		'chakra UI'
+	],
+	rocketnotes: [
+		'ReactJS',
+		'JavaScript',
+		'NodeJS',
+		'SQLite',
+		'HTML5',
+		'CSS3',
+		'Styled-Components'
+	],
+	WRlinkpage: ['Wordpress', 'JavaScript', 'HTML5', 'CSS3'],
+	ydeapage: ['NextJS', 'ReactJS', 'JavaScript', 'Chakra UI']
 }
 
 function ImgContainer({
@@ -20,7 +45,7 @@ function ImgContainer({
 	description,
 	link,
 	hasTemplate,
-	personalTags
+	project
 }: ImgContainerProps) {
 	return (
 		<a href={link} target="_blank">
@@ -58,25 +83,11 @@ function ImgContainer({
 						>
 							{description}
 						</p>
-						{!personalTags ? (
-							<div className="flex justify-center align-center flex-wrap gap-2">
-								<Tag title="ReactJS" />
-								<Tag title="JavaScript" />
-								<Tag title="NodeJS" />
-								<Tag title="SQLite" />
-								<Tag title="HTML5" />
-								<Tag title="CSS3" />
-								<Tag title="Styled-Components" />
-							</div>
-						) : (
-							<div className="flex justify-center align-center flex-wrap gap-2">
-								<Tag title="WordPress" />
-								<Tag title="Elementor" />
-								<Tag title="JavaScript" />
-								<Tag title="HTML5" />
-								<Tag title="CSS3" />
-							</div>
-						)}
+						<div className="flex justify-center align-center flex-wrap gap-2">
+							{projectTags[project].map((tag) => (
+								<Tag title={tag} />
+							))}
+						</div>
 					</div>
 				</div>
 			</div>

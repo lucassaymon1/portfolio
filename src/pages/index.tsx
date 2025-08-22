@@ -6,6 +6,7 @@ import Span from '@/components/Span'
 import foodexplorer from '../assets/images/foodexplorer.png'
 import rocketnotes from '../assets/images/rocketnotes.png'
 import WRlinkpage from '../assets/images/WRlinkpage.png'
+import ydeapage from '../assets/images/ydeapage.png'
 import avatar from '../assets/images/profile.png'
 import { BsMailbox2 } from 'react-icons/bs'
 import { SiMinutemailer } from 'react-icons/si'
@@ -140,7 +141,7 @@ export default function Home() {
 								target="_blank"
 							>
 								<BsLinkedin
-									class="hover:-translate-y-2 transition-all hover:text-green-300"
+									className="hover:-translate-y-2 transition-all hover:text-green-300"
 									size="100%"
 								/>
 							</a>
@@ -151,7 +152,7 @@ export default function Home() {
 									target="_blank"
 								>
 									<BsGithub
-										class="hover:-translate-y-2 transition-all hover:text-green-300"
+										className="hover:-translate-y-2 transition-all hover:text-green-300"
 										size="100%"
 									/>
 								</a>
@@ -162,7 +163,7 @@ export default function Home() {
 									target="_blank"
 								>
 									<HiDocumentText
-										class="hover:-translate-y-2 transition-all hover:text-green-300"
+										className="hover:-translate-y-2 transition-all hover:text-green-300"
 										size="100%"
 									/>
 								</a>
@@ -187,7 +188,7 @@ export default function Home() {
 							className="text-[10vw] font-bold
 							xl:text-[112px] 2xl:text-[128px]"
 						>
-							FULL-STACK
+							FULL STACK
 						</h1>
 						<h1
 							className="text-[10vw] text-green-light dark:text-green-dark
@@ -228,6 +229,7 @@ export default function Home() {
 							src={foodexplorer}
 							description="Um site que oferece uma interface responsiva e a função de expor um cardápio de pratos de um restaurante de forma online, onde o usuário comum pode pesquisar e visualizar os pratos disponíveis, enquanto os administradores podem cadastrar novos pratos, assim como atualizar e excluir pratos já existentes."
 							hasTemplate={true}
+							project={'foodexplorer'}
 						/>
 						<ImgContainer
 							link="https://lsrocketnotes.netlify.app"
@@ -236,15 +238,25 @@ export default function Home() {
 							src={rocketnotes}
 							description="Uma aplicação web que permite que o usuário crie notas pessoais. O site conta com sistema de cadastro, login e autenticação de usuário, além de funcionalidades de busca por notas já criadas, como filtragem por barra de pesquisa ou por tags."
 							hasTemplate={true}
+							project={'rocketnotes'}
+						/>
+						<ImgContainer
+							link="ydea-website.vercel.app"
+							direction="left"
+							title="Site Institucional Ydea Solar"
+							src={ydeapage}
+							description="Site institucional desenvolvido para a empresa Ydea Solar. O site conta com envio de emails por fomulário, páginas de serviços e projetos personalizados, animações e layout responsivo."
+							hasTemplate={false}
+							project={'ydeapage'}
 						/>
 						<ImgContainer
 							link="https://site.wrlink.com.br"
-							direction="left"
-							title="Site WRlink"
+							direction="right"
+							title="Site Institucional WR Link Telecom"
 							src={WRlinkpage}
 							description="Site institucional desenvolvido para a empresa WR Link Telecom. O site conta com animações de elementos, design moderno e layout responsivo para aparelhos desktop e mobile."
 							hasTemplate={false}
-							personalTags={true}
+							project={'WRlinkpage'}
 						/>
 					</div>
 				</section>
@@ -276,22 +288,22 @@ export default function Home() {
 
 						<div className="flex items-center ">
 							<p className="text-lg text-justify font-medium text-slate-700 dark:text-slate-400">
-								Olá, me chamo <i>Lucas Saymon</i> e sou Desenvolvedor Full-Stack
-								com foco em tecnologias como <Span>ReactJS</Span>,{' '}
-								<Span>{'JavaScript (ES6)'}</Span>,{' '}
-								<Span>Styled Components</Span>, <Span>HTML5</Span> e{' '}
-								<Span>CSS3</Span>. Estou na área de programação com foco em
-								Desenvolvimento Web desde Junho de 2022, desde então sigo
-								aprimorando minhas habilidades técnicas na prática com a criação
-								de aplicações responsivas e funcionais. Também estou
-								familiarizado com o desenvolvimento Back-end com{' '}
-								<Span>NodeJS</Span> e <Span>SQLite</Span>, onde já desenvolvi{' '}
-								<Span>APIs REST</Span> que mantém uma comunicação estável com o
-								Front-end. Atualmente expandindo minhas habilidades estudando{' '}
-								<Span>TypeScript</Span> e frameworks de estilização como{' '}
-								<Span>TailwindCSS</Span> e <Span>ChakraUI</Span>. Estou sempre
-								interessado em aprender novas habilidades e tecnologias que me
-								ajudem a aumentar meu poder de ação em projetos reais.
+								Olá! Me chamo <i>Lucas Saymon</i> e sou{' '}
+								<Span>Desenvolvedor Full Stack </Span>
+								com experiência prática em criar aplicações completas e
+								escaláveis — do back-end com <Span>Node.js, Express </Span> e
+								bancos relacionais <Span>(MySQL, PostgreSQL, SQLite)</Span> até
+								o front-end moderno com <Span>React, Next.js e TypeScript</Span>
+								. Nos últimos anos, desenvolvi projetos reais como e-commerces,
+								dashboards interativos e sistemas com autenticação e controle de
+								permissões, aplicando boas práticas de UI/UX, responsividade e
+								segurança. Também tenho experiência com{' '}
+								<Span>testes automatizados (Jest, TDD)</Span>,{' '}
+								<Span>CI/CD </Span> e <Span>Docker</Span>, o que me permite
+								entregar soluções estáveis e prontas para produção. Atualmente,
+								continuo expandindo minhas habilidades em{' '}
+								<Span>Cloud (AWS)</Span>, <Span>MongoDB</Span> e integrações
+								modernas, sempre buscando aprender e aplicar novas tecnologias!
 							</p>
 						</div>
 					</div>
