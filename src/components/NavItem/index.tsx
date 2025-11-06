@@ -5,7 +5,7 @@ import { HiDocumentText } from 'react-icons/hi'
 interface NavPageItemProps {
 	title: string
 	isLast: boolean
-	toPage: boolean
+	toPage?: boolean
 	link: string
 }
 
@@ -21,12 +21,7 @@ export function NavContactItem({
 	toPage
 }: NavContactItemProps) {
 	return (
-		<li
-			className={`dark:border-slate-300 border-slate-800 px-4 ${
-				!isLast && 'border-r-2'
-			}
-			lg:px-6`}
-		>
+		<li className={`dark:border-slate-300 border-slate-800`}>
 			<a
 				className="text-lg font-medium flex gap-2 items-center hover:text-green-light dark:hover:text-green-dark transition-all
 					lg:gap-3 lg:text-xl"

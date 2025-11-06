@@ -19,11 +19,12 @@ const projectTags: Record<string, string[]> = {
 		'ReactJS',
 		'JavaScript',
 		'NodeJS',
+		'JWT',
 		'SQLite',
-		'HTML5',
-		'CSS3',
 		'Styled-Components',
-		'chakra UI'
+		'chakra UI',
+		'HTML5',
+		'CSS3'
 	],
 	rocketnotes: [
 		'ReactJS',
@@ -34,8 +35,8 @@ const projectTags: Record<string, string[]> = {
 		'CSS3',
 		'Styled-Components'
 	],
-	WRlinkpage: ['Wordpress', 'JavaScript', 'HTML5', 'CSS3'],
-	ydeapage: ['NextJS', 'ReactJS', 'JavaScript', 'Chakra UI']
+	WRlinkpage: ['Wordpress', 'JavaScript', 'HTML5', 'CSS3', 'php'],
+	ydeapage: ['NextJS', 'Node.js', 'React', 'JavaScript', 'Chakra UI', 'SEO']
 }
 
 function ImgContainer({
@@ -51,7 +52,7 @@ function ImgContainer({
 		<a href={link} target="_blank">
 			<div
 				className={`
-					dark:bg-slate-900 bg-slate-200 py-12 px-4 mx-6 mb-4 ${
+					dark:bg-slate-900 bg-slate-200 py-12 px-4 mx-6 mb-4 rounded-sm ${
 						direction === 'left'
 							? 'lg:flex-row 2xl:mr-32'
 							: 'lg:flex-row-reverse 2xl:ml-32'
@@ -62,7 +63,9 @@ function ImgContainer({
 				<div
 					className={` flex items-center justify-center
 					lg:w-[80vw] lg:min-w-[550px] ${
-						hasTemplate ? '' : 'rounded-md border-4 border-slate-300'
+						hasTemplate
+							? ''
+							: 'rounded-sm border-2 border-slate-400 dark:border-slate-300'
 					}`}
 				>
 					<Image src={src} alt="Projeto Food Explorer" />

@@ -21,9 +21,13 @@ import { NavContactItem, NavPageItem } from '@/components/NavItem'
 import { StaticImageData } from 'next/image'
 import { SectionTitle } from '@/components/SectionTitle'
 
+import { profile } from '../data/profile'
+
 //icons for dark mode
 import { RiSunFill, RiMoonFill } from 'react-icons/ri'
 import { useEffect, useRef, useState } from 'react'
+import { NavMenu } from '@/components/NavMenu'
+import { Separator } from '@/components/ui/separator'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -84,6 +88,7 @@ export default function Home() {
 	return (
 		<main className="flex justify-center flex-col">
 			<section className="bg-gradient-radial dark:from-slate-800 from-slate-50 dark:to-black to-slate-400 flex align-center justify-center h-screen w-full p-12 relative dark:text-slate-200 text-slate-800">
+				{/* Dark/light mode button */}
 				<button
 					className="absolute left-6 top-10 w-8 xl:w-10 lx:left-16 xl:top-8"
 					onClick={handleTheme}
@@ -101,27 +106,12 @@ export default function Home() {
 					)}
 				</button>
 
-				<nav
-					className="flex justify-center absolute top-0 mt-12
-					lg:right-0 lg:mr-[3vw] lg:mt-[5vh]"
-				>
-					<ul className="flex flex-row ">
-						<NavPageItem
-							isLast={false}
-							title="Habilidades"
-							link="#skills"
-							toPage
-						/>
-						<NavPageItem
-							isLast={false}
-							title="Projetos"
-							link="#projects"
-							toPage
-						/>
-						<NavPageItem isLast={false} title="Sobre" link="#about" toPage />
-						<NavPageItem isLast={true} title="Contato" link="#contact" toPage />
-					</ul>
-				</nav>
+				{/* Header nav */}
+
+				<NavMenu />
+
+				{/* Sessão de apresentação */}
+
 				<div className="flex justify-center align-center flex-col pt-10 dark:text-[lightgray] text-slate-700">
 					<div className="w-full flex justify-between items-center">
 						<h1
@@ -129,7 +119,7 @@ export default function Home() {
 								lg:ml-2 lg:mb-4
 							 xl:text-[52px] xl:leading-[5rem]"
 						>
-							Olá, sou Lucas Saymon 👋
+							{`Olá, sou ${profile.name} 👋`}
 						</h1>
 						<div
 							className="hidden relative z-10 text-green-light dark:text-green-dark
@@ -137,7 +127,7 @@ export default function Home() {
 						>
 							<a
 								className="max-w-[56px] w-[3vw]"
-								href="https://www.linkedin.com/in/lucas-saymon/"
+								href={profile.linkedin}
 								target="_blank"
 							>
 								<BsLinkedin
@@ -148,7 +138,7 @@ export default function Home() {
 							<div className="flex gap-[1vw]">
 								<a
 									className="max-w-[60px] w-[3vw]"
-									href="https://www.github.com/lucassaymon1"
+									href={profile.github}
 									target="_blank"
 								>
 									<BsGithub
@@ -159,7 +149,7 @@ export default function Home() {
 
 								<a
 									className="max-w-[72px] w-[4vw]"
-									href="https://docs.google.com/document/d/1cwg99b3KJI7Ep5wJ5rGKyV4zRkDI5g2ZCbk_FsfKFBg/edit?usp=sharing"
+									href={profile.resume}
 									target="_blank"
 								>
 									<HiDocumentText
@@ -202,25 +192,28 @@ export default function Home() {
 						md:text-xl
 						lg:text-2xl lg:text-left"
 					>
-						Desenvolvedor web <Span>Full-Stack</Span> a procura de
-						<Span> oportunidades</Span> para <Span>aprimorar </Span>
-						minhas habilidades como <Span>programador</Span>.
+						{profile.objective}
 					</p>
 				</div>
 			</section>
 			<div className="bg-slate-500 h-1"></div>
 			<div className="dark:bg-slate-900 bg-slate-200">
+				{/* Sessão de Skills */}
+
 				<section className="pt-24 text-center mb-6 lg:mx-16" id="skills">
-					<SectionTitle title="Habilidades" custom="" />
+					<SectionTitle title="Habilidades" />
 
 					<SkillSection theme={theme} />
 				</section>
+
+				{/* Sessão de Projetos */}
+
 				<section
 					className=" text-center
 					md:p-12 md:pb-0"
 					id="projects"
 				>
-					<SectionTitle title="Projetos" custom="mt-20 lg:mt-0" />
+					<SectionTitle title="Projetos" className="mt-20 lg:mt-0" />
 					<div className="flex flex-col gap-16">
 						<ImgContainer
 							link="https://lsfoodexplorer.netlify.app"
@@ -261,19 +254,22 @@ export default function Home() {
 					</div>
 				</section>
 			</div>
+
+			{/* Sessão sobre */}
+
 			<section
 				className="dark:bg-slate-900 bg-slate-200 pt-24 pb-36 md:pt-48 md:px-12 lg:px-16"
 				id="about"
 			>
 				<SectionTitle
 					title="Sobre mim"
-					custom="lg:hidden text-4xl border-b border-slate-500 pb-6"
+					className="lg:hidden text-4xl border-b border-slate-500 pb-6 mx-10 mb-14"
 				/>
 				<div
-					className="flex gap-16 flex-col justify-center mx-12 items-center
-				lg:flex-row lg:mx-0"
+					className="flex gap-16 flex-col justify-center px-7 items-center
+					lg:flex-row lg:mx-0"
 				>
-					<div className="h-full p-6 border border-slate-500 shadow-lg lg:p-8">
+					<div className="h-full p-6 border border-slate-500 rounded-sm shadow-lg lg:p-8">
 						<Image
 							className="rounded-2xl w-56 shadow-md sm:w-72 md:w-80 lg:w-96"
 							src={avatar}
@@ -283,40 +279,28 @@ export default function Home() {
 					<div className="lg:w-1/2">
 						<SectionTitle
 							title="Sobre mim"
-							custom="hidden lg:text-center lg:text-4xl lg:border-b lg:border-slate-500 lg:pb-4 lg:mx-24 lg:block lg:pt-0"
+							className="hidden lg:text-center lg:text-4xl lg:border-b lg:border-slate-500 lg:pb-4 lg:mx-24 lg:block lg:pt-0"
 						/>
 
 						<div className="flex items-center ">
 							<p className="text-lg text-justify font-medium text-slate-700 dark:text-slate-400">
-								Olá! Me chamo <i>Lucas Saymon</i> e sou{' '}
-								<Span>Desenvolvedor Full Stack </Span>
-								com experiência prática em criar aplicações completas e
-								escaláveis — do back-end com <Span>Node.js, Express </Span> e
-								bancos relacionais <Span>(MySQL, PostgreSQL, SQLite)</Span> até
-								o front-end moderno com <Span>React, Next.js e TypeScript</Span>
-								. Nos últimos anos, desenvolvi projetos reais como e-commerces,
-								dashboards interativos e sistemas com autenticação e controle de
-								permissões, aplicando boas práticas de UI/UX, responsividade e
-								segurança. Também tenho experiência com{' '}
-								<Span>testes automatizados (Jest, TDD)</Span>,{' '}
-								<Span>CI/CD </Span> e <Span>Docker</Span>, o que me permite
-								entregar soluções estáveis e prontas para produção. Atualmente,
-								continuo expandindo minhas habilidades em{' '}
-								<Span>Cloud (AWS)</Span>, <Span>MongoDB</Span> e integrações
-								modernas, sempre buscando aprender e aplicar novas tecnologias!
+								{profile.aboutMe}
 							</p>
 						</div>
 					</div>
 				</div>
 			</section>
 			<div className="bg-slate-500 h-1"></div>
+
+			{/* Sessão de contato */}
+
 			<section
 				className="
 				bg-gradient-radial dark:from-slate-800 from-slate-100 dark:to-black to-slate-400
-				p-12 text-center dark:text-slate-100 text-slate-800"
+				py-12 px-8 text-center md:p-12 dark:text-slate-100 text-slate-800"
 				id="contact"
 			>
-				<SectionTitle title="Contato" custom="" />
+				<SectionTitle title="Contato" />
 				<div
 					className="w-full  mb-12
 					lg:grid lg:grid-cols-10"
@@ -344,11 +328,14 @@ export default function Home() {
 								/>
 							</div>
 							<div className="w-full">
-								<h3 className="text-xl text-left font-medium lg:ml-4 lg:mb-12">
+								<h3 className="text-xl text-center font-medium md:text-left lg:ml-4 lg:mb-12">
 									Copie meu endereço de email e entre em contato. 😉
 								</h3>
 							</div>
 						</div>
+
+						{/* Componente de copiar email */}
+
 						<div className="w-full grid grid-cols-4">
 							<div className="w-full dark:bg-slate-200 bg-slate-800 rounded-tl-xl flex items-center justify-center">
 								<FiMail className="dark:text-black text-white" size="24px" />
@@ -370,29 +357,27 @@ export default function Home() {
 						</button>
 					</div>
 				</div>
+
+				{/* Links para contato */}
+
 				<nav className="flex justify-center">
-					<ul className="flex flex-row ">
-						<NavContactItem
-							isLast={false}
-							title="GitHub"
-							link="https://www.github.com/lucassaymon1"
-							toPage={false}
-						>
+					<ul className="flex flex-row gap-4">
+						<NavContactItem isLast={false} title="GitHub" link={profile.github}>
 							<BsGithub size="22px" />
 						</NavContactItem>
+						<Separator orientation="vertical" className="bg-slate-500" />
 						<NavContactItem
 							isLast={false}
 							title="LinkedIn"
-							link="https://www.linkedin.com/in/lucas-saymon/"
-							toPage={false}
+							link={profile.linkedin}
 						>
 							<BsLinkedin />
 						</NavContactItem>
+						<Separator orientation="vertical" className="bg-slate-500" />
 						<NavContactItem
 							isLast={true}
 							title="Currículo"
-							link="https://docs.google.com/document/d/1cwg99b3KJI7Ep5wJ5rGKyV4zRkDI5g2ZCbk_FsfKFBg/edit?usp=sharing"
-							toPage={false}
+							link={profile.resume}
 						>
 							<HiDocumentText size="24px" />
 						</NavContactItem>
