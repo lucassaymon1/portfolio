@@ -6,47 +6,47 @@ import { PropsWithChildren } from 'react'
 type ImgContainerProps = {
 	src: string | StaticImageData
 	title: string
-	direction: string
+	direction?: string
 	description: string
 	link: string
 	hasTemplate: boolean
 	personalTags?: boolean
-	project: string
+	tags: string[]
 }
 
-const projectTags: Record<string, string[]> = {
-	foodexplorer: [
-		'ReactJS',
-		'JavaScript',
-		'NodeJS',
-		'JWT',
-		'SQLite',
-		'Styled-Components',
-		'chakra UI',
-		'HTML5',
-		'CSS3'
-	],
-	rocketnotes: [
-		'ReactJS',
-		'JavaScript',
-		'NodeJS',
-		'SQLite',
-		'HTML5',
-		'CSS3',
-		'Styled-Components'
-	],
-	WRlinkpage: ['Wordpress', 'JavaScript', 'HTML5', 'CSS3', 'php'],
-	ydeapage: ['NextJS', 'Node.js', 'React', 'JavaScript', 'Chakra UI', 'SEO']
-}
+// const projectTags: Record<string, string[]> = {
+// 	foodexplorer: [
+// 		'ReactJS',
+// 		'JavaScript',
+// 		'NodeJS',
+// 		'JWT',
+// 		'SQLite',
+// 		'Styled-Components',
+// 		'chakra UI',
+// 		'HTML5',
+// 		'CSS3'
+// 	],
+// 	rocketnotes: [
+// 		'ReactJS',
+// 		'JavaScript',
+// 		'NodeJS',
+// 		'SQLite',
+// 		'HTML5',
+// 		'CSS3',
+// 		'Styled-Components'
+// 	],
+// 	WRlinkpage: ['Wordpress', 'JavaScript', 'HTML5', 'CSS3', 'php'],
+// 	ydeapage: ['NextJS', 'Node.js', 'React', 'JavaScript', 'Chakra UI', 'SEO']
+// }
 
-function ImgContainer({
+function ProjectCard({
 	src,
 	title,
 	direction,
 	description,
 	link,
 	hasTemplate,
-	project
+	tags
 }: ImgContainerProps) {
 	return (
 		<a href={link} target="_blank">
@@ -87,8 +87,8 @@ function ImgContainer({
 							{description}
 						</p>
 						<div className="flex justify-center align-center flex-wrap gap-2">
-							{projectTags[project].map((tag) => (
-								<Tag title={tag} key={`${project}${tag}`} />
+							{tags.map((tag, id) => (
+								<Tag title={tag} key={id} />
 							))}
 						</div>
 					</div>
@@ -98,4 +98,4 @@ function ImgContainer({
 	)
 }
 
-export default ImgContainer
+export default ProjectCard

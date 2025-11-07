@@ -9,11 +9,10 @@ import {
 	MenubarShortcut,
 	MenubarTrigger
 } from '../ui/menubar'
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 
 export function NavMenu() {
 	const [menuActive, setMenuActive] = useState(false)
-	const menuTriggerRef = useRef(null)
 	const navItems = [
 		{
 			title: 'Habilidades',
@@ -52,7 +51,7 @@ export function NavMenu() {
 							<RxCross2 size={26} />
 						)}
 					</MenubarTrigger>
-					<MenubarContent className="bg-slate-950/40 border border-slate-900 mr-3">
+					<MenubarContent className="dark:bg-slate-950/40 border dark:border-slate-900 mr-3">
 						{navItems.map((navItem, id) => (
 							<>
 								<MenubarItem key={id}>
@@ -64,7 +63,7 @@ export function NavMenu() {
 									</a>
 								</MenubarItem>
 								{id !== navItems.length - 1 && (
-									<MenubarSeparator className="bg-slate-600" />
+									<MenubarSeparator className="bg-slate-300 dark:bg-slate-600" />
 								)}
 							</>
 						))}

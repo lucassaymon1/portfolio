@@ -1,33 +1,24 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import { SkillSection } from '@/components/SkillSection'
-import ImgContainer from '@/components/imgContainer'
-import Span from '@/components/Span'
-import foodexplorer from '../assets/images/foodexplorer.png'
-import rocketnotes from '../assets/images/rocketnotes.png'
-import WRlinkpage from '../assets/images/WRlinkpage.png'
-import ydeapage from '../assets/images/ydeapage.png'
 import avatar from '../assets/images/profile.png'
-import { BsMailbox2 } from 'react-icons/bs'
 import { SiMinutemailer } from 'react-icons/si'
-import { GiMailbox } from 'react-icons/gi'
-import { GoMail } from 'react-icons/go'
 import { FiMail } from 'react-icons/fi'
-import { FaPaperPlane } from 'react-icons/fa'
-import { IoIosPaperPlane } from 'react-icons/io'
 import { BsLinkedin, BsGithub } from 'react-icons/bs'
 import { HiDocumentText } from 'react-icons/hi'
 import { NavContactItem, NavPageItem } from '@/components/NavItem'
-import { StaticImageData } from 'next/image'
 import { SectionTitle } from '@/components/SectionTitle'
 
+// data imports
 import { profile } from '../data/profile'
+import { projects } from '../data/projects'
 
-//icons for dark mode
+// icons for dark mode
 import { RiSunFill, RiMoonFill } from 'react-icons/ri'
 import { useEffect, useRef, useState } from 'react'
 import { NavMenu } from '@/components/NavMenu'
 import { Separator } from '@/components/ui/separator'
+import ProjectCard from '@/components/ProjectCard'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -40,6 +31,7 @@ export default function Home() {
 	const contactEmail = 'lucassaymon.dev@gmail.com'
 	const emailRef = useRef<HTMLDivElement | null>(null)
 
+	// Salva o tema preferido do= usuário
 	useEffect(() => {
 		const savedTheme = localStorage.getItem('theme')
 
@@ -55,6 +47,7 @@ export default function Home() {
 		}
 	}, [])
 
+	// load saved theme
 	useEffect(() => {
 		if (theme === 'dark') {
 			document.documentElement.classList.add('dark')
@@ -63,12 +56,14 @@ export default function Home() {
 		}
 	}, [theme])
 
+	// changes the theme when user toggle theme button
 	function handleTheme() {
 		const newTheme = theme === 'dark' ? 'light' : 'dark'
 		setTheme(newTheme)
 		localStorage.setItem('theme', newTheme)
 	}
 
+	// copy the email and handle the state of the elements on the #contact section
 	function handleCopyEmail(email: string) {
 		const bgColor = theme === 'dark' ? 'bg-green-dark' : 'bg-green-light'
 		setCopyEmail(email)
@@ -107,11 +102,9 @@ export default function Home() {
 				</button>
 
 				{/* Header nav */}
-
 				<NavMenu />
 
 				{/* Sessão de apresentação */}
-
 				<div className="flex justify-center align-center flex-col pt-10 dark:text-[lightgray] text-slate-700">
 					<div className="w-full flex justify-between items-center">
 						<h1
@@ -131,7 +124,7 @@ export default function Home() {
 								target="_blank"
 							>
 								<BsLinkedin
-									className="hover:-translate-y-2 transition-all hover:text-green-300"
+									className="hover:-translate-y-2 transition-all hover:text-emerald-700 dark:hover:text-green-300"
 									size="100%"
 								/>
 							</a>
@@ -142,7 +135,7 @@ export default function Home() {
 									target="_blank"
 								>
 									<BsGithub
-										className="hover:-translate-y-2 transition-all hover:text-green-300"
+										className="hover:-translate-y-2 transition-all hover:text-emerald-700 dark:hover:text-green-300"
 										size="100%"
 									/>
 								</a>
@@ -153,7 +146,7 @@ export default function Home() {
 									target="_blank"
 								>
 									<HiDocumentText
-										className="hover:-translate-y-2 transition-all hover:text-green-300"
+										className="hover:-translate-y-2 transition-all hover:text-emerald-700 dark:hover:text-green-300"
 										size="100%"
 									/>
 								</a>
@@ -198,16 +191,13 @@ export default function Home() {
 			</section>
 			<div className="bg-slate-500 h-1"></div>
 			<div className="dark:bg-slate-900 bg-slate-200">
-				{/* Sessão de Skills */}
-
+				{/* Skills Section */}
 				<section className="pt-24 text-center mb-6 lg:mx-16" id="skills">
 					<SectionTitle title="Habilidades" />
-
 					<SkillSection theme={theme} />
 				</section>
 
-				{/* Sessão de Projetos */}
-
+				{/* Projects section */}
 				<section
 					className=" text-center
 					md:p-12 md:pb-0"
@@ -215,48 +205,22 @@ export default function Home() {
 				>
 					<SectionTitle title="Projetos" className="mt-20 lg:mt-0" />
 					<div className="flex flex-col gap-16">
-						<ImgContainer
-							link="https://lsfoodexplorer.netlify.app"
-							direction="left"
-							title="Food Explorer"
-							src={foodexplorer}
-							description="Um site que oferece uma interface responsiva e a função de expor um cardápio de pratos de um restaurante de forma online, onde o usuário comum pode pesquisar e visualizar os pratos disponíveis, enquanto os administradores podem cadastrar novos pratos, assim como atualizar e excluir pratos já existentes."
-							hasTemplate={true}
-							project={'foodexplorer'}
-						/>
-						<ImgContainer
-							link="https://lsrocketnotes.netlify.app"
-							direction="right"
-							title="Rocket Notes"
-							src={rocketnotes}
-							description="Uma aplicação web que permite que o usuário crie notas pessoais. O site conta com sistema de cadastro, login e autenticação de usuário, além de funcionalidades de busca por notas já criadas, como filtragem por barra de pesquisa ou por tags."
-							hasTemplate={true}
-							project={'rocketnotes'}
-						/>
-						<ImgContainer
-							link="https://ydeasolar.com.br"
-							direction="left"
-							title="Site Institucional Ydea Solar"
-							src={ydeapage}
-							description="Site institucional desenvolvido para a empresa Ydea Solar. O site conta com envio de emails por fomulário, páginas de serviços e projetos personalizados, animações e layout responsivo."
-							hasTemplate={false}
-							project={'ydeapage'}
-						/>
-						<ImgContainer
-							link="https://site.wrlink.com.br"
-							direction="right"
-							title="Site Institucional WR Link Telecom"
-							src={WRlinkpage}
-							description="Site institucional desenvolvido para a empresa WR Link Telecom. O site conta com animações de elementos, design moderno e layout responsivo para aparelhos desktop e mobile."
-							hasTemplate={false}
-							project={'WRlinkpage'}
-						/>
+						{projects.map((project, id) => (
+							<ProjectCard
+								link={project.link}
+								title={project.title}
+								src={project.imageSrc}
+								description={project.description}
+								hasTemplate={project.hasTemplate}
+								tags={project.tags}
+								direction={id % 2 === 0 ? 'left' : 'right'}
+							/>
+						))}
 					</div>
 				</section>
 			</div>
 
-			{/* Sessão sobre */}
-
+			{/* About Section */}
 			<section
 				className="dark:bg-slate-900 bg-slate-200 pt-24 pb-36 md:pt-48 md:px-12 lg:px-16"
 				id="about"
@@ -272,7 +236,7 @@ export default function Home() {
 					<div className="h-full p-6 border border-slate-500 rounded-sm shadow-lg lg:p-8">
 						<Image
 							className="rounded-2xl w-56 shadow-md sm:w-72 md:w-80 lg:w-96"
-							src={avatar}
+							src={profile.profilePic}
 							alt="Minha foto de perfil"
 						/>
 					</div>
@@ -292,8 +256,7 @@ export default function Home() {
 			</section>
 			<div className="bg-slate-500 h-1"></div>
 
-			{/* Sessão de contato */}
-
+			{/* Contact Section */}
 			<section
 				className="
 				bg-gradient-radial dark:from-slate-800 from-slate-100 dark:to-black to-slate-400
@@ -334,8 +297,7 @@ export default function Home() {
 							</div>
 						</div>
 
-						{/* Componente de copiar email */}
-
+						{/* Component for email copying */}
 						<div className="w-full grid grid-cols-4">
 							<div className="w-full dark:bg-slate-200 bg-slate-800 rounded-tl-xl flex items-center justify-center">
 								<FiMail className="dark:text-black text-white" size="24px" />
@@ -358,8 +320,7 @@ export default function Home() {
 					</div>
 				</div>
 
-				{/* Links para contato */}
-
+				{/* Links for contact */}
 				<nav className="flex justify-center">
 					<ul className="flex flex-row gap-4">
 						<NavContactItem isLast={false} title="GitHub" link={profile.github}>

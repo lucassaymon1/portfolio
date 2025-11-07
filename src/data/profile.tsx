@@ -1,6 +1,8 @@
 import Span from '@/components/Span'
+import avatar from '../assets/images/profile.png'
 
 export const profile = {
+	profilePic: avatar,
 	name: 'Lucas Saymon',
 	role: 'Desenvolvedor Full Stack',
 	email: 'lucassaymon.dev@gmail.com',
