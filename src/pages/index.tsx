@@ -207,6 +207,7 @@ export default function Home() {
 					<div className="flex flex-col gap-16">
 						{projects.map((project, id) => (
 							<ProjectCard
+								key={id}
 								link={project.link}
 								title={project.title}
 								src={project.imageSrc}
