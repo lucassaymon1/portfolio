@@ -234,7 +234,7 @@ export default function Home() {
 							project={'rocketnotes'}
 						/>
 						<ImgContainer
-							link="ydea-website.vercel.app"
+							link="https://ydeasolar.com.br"
 							direction="left"
 							title="Site Institucional Ydea Solar"
 							src={ydeapage}
