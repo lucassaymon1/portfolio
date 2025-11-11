@@ -11,9 +11,12 @@ import {
 	Nextjs,
 	Nodejs,
 	Reactjs,
-	Sqlite,
+	PostgreSQL,
 	Typescript,
-	StyledComponents
+	StyledComponents,
+	Docker,
+	AWS,
+	MongoDB
 } from '@/utils/techIcons'
 
 interface TechIconProps {
@@ -51,18 +54,21 @@ interface SkillSectionProps {
 
 export function SkillSection({ theme }: SkillSectionProps) {
 	const techIcons = [
-		{ name: Javascript, title: 'JavaScript' },
-		{ name: Typescript, title: 'TypeScript' },
-		{ name: Nextjs, title: 'NextJS' },
+		{ name: Nodejs, title: 'NodeJS' },
 		{ name: Reactjs, title: 'ReactJS' },
+		{ name: Nextjs, title: 'NextJS' },
+		{ name: Typescript, title: 'TypeScript' },
+		{ name: PostgreSQL, title: 'PostgreSQL' },
+		{ name: MongoDB, title: 'MongoDB' },
+		{ name: Docker, title: 'Docker' },
+		{ name: AWS, title: 'AWS' },
 		{ name: Tailwindcss, title: 'Tailwind CSS' },
 		{ name: StyledComponents, title: 'Styled-Components' },
+		{ name: Git, title: 'Git' },
+		{ name: GitHub, title: 'GitHub' },
 		{ name: Html, title: 'HTML5' },
 		{ name: Css, title: 'CSS3' },
-		{ name: Nodejs, title: 'NodeJS' },
-		{ name: Sqlite, title: 'SQLite' },
-		{ name: Git, title: 'Git' },
-		{ name: GitHub, title: 'GitHub' }
+		{ name: Javascript, title: 'JavaScript' }
 	]
 	return (
 		<div className="flex flex-row flex-wrap gap-6 justify-center align-center">
