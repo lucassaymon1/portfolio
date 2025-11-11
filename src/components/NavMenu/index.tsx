@@ -53,8 +53,8 @@ export function NavMenu() {
 					</MenubarTrigger>
 					<MenubarContent className="dark:bg-slate-950/40 border dark:border-slate-900 mr-3">
 						{navItems.map((navItem, id) => (
-							<>
-								<MenubarItem key={id}>
+							<div key={id}>
+								<MenubarItem>
 									<a
 										href={navItem.link}
 										className="font-semibold text-green-light dark:text-green-dark"
@@ -65,7 +65,7 @@ export function NavMenu() {
 								{id !== navItems.length - 1 && (
 									<MenubarSeparator className="bg-slate-300 dark:bg-slate-600" />
 								)}
-							</>
+							</div>
 						))}
 					</MenubarContent>
 				</MenubarMenu>
