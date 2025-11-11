@@ -19,12 +19,13 @@ html{
 }
 
 html::-webkit-scrollbar{
-  width: 12px;
+  width: 10px;
 }
 
 html::-webkit-scrollbar-thumb{
   background-color: #23c55e;
-  border-radius: 20px;
+  margin-inline: 2px;
+  border-radius: 2px;
 }
 
 html::-webkit-scrollbar-track{

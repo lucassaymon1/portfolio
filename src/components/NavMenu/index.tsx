@@ -74,7 +74,7 @@ export function NavMenu() {
 				className="hidden md:flex justify-center absolute top-0 mt-12
 								lg:right-0 lg:mr-[3vw] lg:mt-[5vh]"
 			>
-				<ul className="flex flex-row">
+				<ul className="flex flex-row ">
 					{navItems.map((navItem, id) => (
 						<NavPageItem
 							key={id}

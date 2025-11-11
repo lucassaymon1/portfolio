@@ -52,11 +52,11 @@ function ProjectCard({
 		<a href={link} target="_blank">
 			<div
 				className={`
-					dark:bg-slate-900 bg-slate-200 py-12 px-4 mx-6 mb-4 rounded-sm ${
+					dark:bg-slate-900 bg-slate-100 py-12 px-4 mx-6 mb-4 rounded-sm ${
 						direction === 'left'
 							? 'lg:flex-row 2xl:mr-32'
 							: 'lg:flex-row-reverse 2xl:ml-32'
-					} justify-between gap-12 shadow-lg border dark:border-slate-500 border-slate-400 dark:hover:bg-slate-800 hover:bg-slate-300 transition-all
+					} justify-between gap-12 shadow-lg border dark:border-slate-500 border-slate-400 dark:hover:bg-slate-800 hover:bg-slate-200 transition-all
 						lg:p-12 xl:flex
 					`}
 			>

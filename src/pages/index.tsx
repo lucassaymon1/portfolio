@@ -91,12 +91,12 @@ export default function Home() {
 					{theme && theme === 'light' ? (
 						<RiMoonFill
 							size="100%"
-							className="moonIcon hover:text-emerald-700 transition-all"
+							className="moonIcon text-teal-900 hover:text-emerald-700 transition-all"
 						/>
 					) : (
 						<RiSunFill
 							size="100%"
-							className="sunIcon hover:text-green-dark transition-all"
+							className="sunIcon text-yellow-100 hover:text-green-dark transition-all "
 						/>
 					)}
 				</button>
@@ -183,14 +183,14 @@ export default function Home() {
 					<p
 						className=" font-medium max-w-5xl
 						md:text-xl
-						lg:text-2xl lg:text-left"
+						lg:text-2xl lg:text-left text-teal-800 dark:text-yellow-100"
 					>
 						{profile.objective}
 					</p>
 				</div>
 			</section>
 			<div className="bg-slate-500 h-1"></div>
-			<div className="dark:bg-slate-900 bg-slate-200">
+			<div className="dark:bg-slate-900 bg-slate-100">
 				{/* Skills Section */}
 				<section className="pt-24 text-center mb-6 lg:mx-16" id="skills">
 					<SectionTitle title="Habilidades" />
@@ -203,7 +203,7 @@ export default function Home() {
 					md:p-12 md:pb-0"
 					id="projects"
 				>
-					<SectionTitle title="Projetos" className="mt-20 lg:mt-0" />
+					<SectionTitle title="Meus Projetos" className="mt-20 lg:mt-0" />
 					<div className="flex flex-col gap-16">
 						{projects.map((project, id) => (
 							<ProjectCard
@@ -223,7 +223,7 @@ export default function Home() {
 
 			{/* About Section */}
 			<section
-				className="dark:bg-slate-900 bg-slate-200 pt-24 pb-36 md:pt-48 md:px-12 lg:px-16"
+				className="dark:bg-slate-900 bg-slate-100 pt-24 pb-36 md:pt-48 md:px-12 lg:px-16"
 				id="about"
 			>
 				<SectionTitle
@@ -260,7 +260,7 @@ export default function Home() {
 			{/* Contact Section */}
 			<section
 				className="
-				bg-gradient-radial dark:from-slate-800 from-slate-100 dark:to-black to-slate-400
+				bg-gradient-radial dark:from-slate-800 from-slate-50 dark:to-black to-slate-400
 				py-12 px-8 text-center md:p-12 dark:text-slate-100 text-slate-800"
 				id="contact"
 			>
